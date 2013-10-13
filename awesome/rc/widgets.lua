@@ -10,6 +10,7 @@ local sepclose = widget({ type = "imagebox" })
 sepclose.image = image(beautiful.icons .. "/widgets/right.png")
 local spacer = widget({ type = "imagebox" })
 spacer.image = image(beautiful.icons .. "/widgets/spacer.png")
+aws_icon = image(beautiful.icons .. "/widgets/awesome.png")
 
 -- Date
 local datewidget = widget({ type = "textbox" })
@@ -181,12 +182,12 @@ myawesomemenu = {
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
+mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, aws_icon },
                                     { "open terminal", config.terminal },
 									{ "shutdown", "/usr/lib/indicator-session/gtk-logout-helper --shutdown"},
                                   }
                         })
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
+mylauncher = awful.widget.launcher({ image = aws_icon,
 									 menu = mymainmenu })
 
 for s = 1, screen.count() do
@@ -220,13 +221,13 @@ for s = 1, screen.count() do
 
     wibox[s].widgets = {
         {
-		   screen.count() > 1 and sepopen or "",
+		   sepopen,
 		   mylauncher,
-		   screen.count() > 1 and spacer or "",
+		   sepclose,
 		   taglist[s],
-		   screen.count() > 1 and spacer or "",
+		   sepopen,
 		   layoutbox[s],
-		   screen.count() > 1 and sepclose or "",
+		   sepclose,
 		   promptbox[s],
 		   layout = awful.widget.layout.horizontal.leftright
 		},

@@ -8,26 +8,24 @@
 
 function gvim_cfg_install {
 	#remove any previous configuration
-	rm -rf .gvim
-	rm -f .gvimrc
+	rm -rf $HOME/.vim
+	rm -f $HOME/.vimrc
 	#create the new links
-	ln -s configs .gvim
-	ln -s .gvim/.vimrc .vimrc	
+	ln -s $HOME/configs/.vim $HOME/.vim
+	ln -s $HOME/.vim/.vimrc $HOME/.vimrc	
 }
 
 function awesome_cfg_install {
 	#remove any previous configuration
-	rm -rf .config/awesome
+	rm -rf $HOME/.config/awesome
 	#create the new links
-	ln -s configs/awesome .config/awesome
+	ln -s $HOME/configs/awesome $HOME/.config/awesome
 }
 
-#cd into home
-cd ..
 #install vim
-gvim_cfg_install()
+gvim_cfg_install
 #install awesome
-awesome_cfg_install() 
+awesome_cfg_install 
 
 echo Configuration files installed !
 echo Enjoy

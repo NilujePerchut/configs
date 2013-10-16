@@ -50,9 +50,13 @@ call pathogen#infect()
 """"""""""""""""""""""""""
 " Genral stuff
 """"""""""""""""""""""""""
-set background=dark
-colorscheme solarized
-set cursorline
+if has("gui_running")
+	set background=dark
+	colorscheme solarized
+	set cursorline
+else
+	colorscheme delek
+endif
 set hlsearch
 set incsearch
 set nu

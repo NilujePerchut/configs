@@ -217,6 +217,10 @@ for s = 1, screen.count() do
        if s == screen.count() then return what end
        return ""
     end
+    local on_lessthanmax = function(what)
+       if s < screen.count() then return what end
+       return ""
+    end
 
 
     wibox[s].widgets = {
@@ -233,7 +237,7 @@ for s = 1, screen.count() do
 		},
 		-- Display widgets other than date only on higher screen number
 		sepclose,
-		datewidget, dateicon , on(1,sepopen), on(2,spacer),
+		datewidget, dateicon , on_lessthanmax(sepopen), on_max(spacer),
 		on_max(systray), on_max(spacer),
 		on_max(volwidget), on_max(volicon), on_max(spacer),
 

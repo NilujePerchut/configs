@@ -71,8 +71,8 @@ nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
 "Switch between gVim tab using ALT+SHIFT+[jk]
-nmap <silent> <A-K> gt
-nmap <silent> <A-J> gT
+nmap <silent> <A-k> gt
+nmap <silent> <A-j> gT
 "Use . instead of \ as leader key
 let mapleader = ","
 

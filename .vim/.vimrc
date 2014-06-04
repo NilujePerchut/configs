@@ -42,6 +42,9 @@ set colorcolumn=80
 "Explicitly specify Ruler
 set ruler
 
+"Avoid swap files
+set noswapfile
+
 """"""""""""""""""""""""""
 " Pathogen stuff
 """"""""""""""""""""""""""
@@ -96,12 +99,19 @@ function FT_vhdl()
 	setlocal tabstop=2
 	setlocal shiftwidth=2
 	setlocal softtabstop=2
+	setlocal expandtab=0
 	"Aliases
 	iabbr dt downto 
 	iabbr sig Signal
 	iabbr sl Std_Logic
 	iabbr slv Std_Logic_Vector
 endfunction
+
+""""""""""""""""""""""""""
+" Tabulations command
+""""""""""""""""""""""""""
+:command KernelTabs set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+:command StdTabs set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 """"""""""""""""""""""""""
 " Plugins

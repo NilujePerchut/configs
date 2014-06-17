@@ -56,7 +56,6 @@ call pathogen#infect()
 if has("gui_running")
 	set background=dark
 	colorscheme solarized
-	let g:solarized_hitrail=1
 	set cursorline
 else
 	colorscheme delek
@@ -86,6 +85,7 @@ let mapleader = ","
 if has("autocmd")
 	filetype plugin indent on
 	au FileType vhdl call FT_vhdl()
+	au FileType python call FT_python()
 else
 	set autoindent
 endif
@@ -101,6 +101,14 @@ function FT_vhdl()
 	iabbr sig Signal
 	iabbr sl Std_Logic
 	iabbr slv Std_Logic_Vector
+endfunction
+
+" Python stuff
+function FT_python()
+	setlocal tabstop=4
+	setlocal shiftwidth=4
+	setlocal softtabstop=4
+	setlocal expandtab
 endfunction
 
 """"""""""""""""""""""""""
@@ -137,7 +145,9 @@ if has('cmdline_info')
     "set scrolloff=3 " Minimum lines to keep above and below cursor
     "set foldenable " Auto fold code
     set list
-    set listchars=tab:›\ ,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:\ \ ,trail:_,extends:#,nbsp:. " Highlight problematic whitespace
+    "set listchars=tab:›\ ,trail:_,extends:#,nbsp:. " Highlight problematic whitespace
+	hi SpecialKey ctermfg=7 guifg=red
 " }
 
 """"""""""""""""""""""""""

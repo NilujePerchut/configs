@@ -80,11 +80,6 @@ nmap <silent> <A-j> gT
 let mapleader = ","
 
 """"""""""""""""""""""""""
-" Ctags search path
-""""""""""""""""""""""""""
-set tags=./tags;/
-
-""""""""""""""""""""""""""
 " Language specific stuff
 """"""""""""""""""""""""""
 if has("autocmd")
@@ -108,6 +103,43 @@ function FT_vhdl()
 endfunction
 
 """"""""""""""""""""""""""
+" Status and command line
+""""""""""""""""""""""""""
+if has('cmdline_info')
+        set ruler " Show the ruler
+        set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
+        set showcmd " Show partial commands in status line and
+" Selected characters/lines in visual mode
+    endif
+
+    if has('statusline')
+        set laststatus=2
+        " Broken down into easily includeable segments
+        set statusline=%<%f\ " Filename
+        set statusline+=%w%h%m%r " Options
+        set statusline+=%{fugitive#statusline()} " Git Hotness
+        set statusline+=\ [%{&ff}/%Y] " Filetype
+        set statusline+=\ [%{getcwd()}] " Current dir
+        set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
+    endif
+
+    set backspace=indent,eol,start " Backspace for dummies
+    set linespace=0 " No extra spaces between rows
+    set showmatch " Show matching brackets/parenthesis
+    set winminheight=0 " Windows can be 0 line high
+    set ignorecase " Case insensitive search
+    set smartcase " Case sensitive when uc present
+    set wildmenu " Show list instead of just completing
+    set wildmode=list:longest,full " Command <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,] " Backspace and cursor keys wrap too
+    "set scrolljump=5 " Lines to scroll when cursor leaves screen
+    "set scrolloff=3 " Minimum lines to keep above and below cursor
+    set foldenable " Auto fold code
+    set list
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+" }
+
+""""""""""""""""""""""""""
 " Tabulations command
 """"""""""""""""""""""""""
 :command KernelTabs set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
@@ -117,7 +149,53 @@ endfunction
 " Plugins
 """"""""""""""""""""""""""
 
-" NERDTree 
+" Ctags {
+        set tags=./tags;/,~/.vimtags
+
+" Make tags placed in .git/tags file available in all levels of a repository
+        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
+        if gitroot != ''
+            let &tags = &tags . ',' . gitroot . '/.git/tags'
+        endif
+" }
+
+" Fugitive {
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gd :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+" Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+"}
+
+" vim-airline {
+" Set configuration options for the statusline plugin vim-airline.
+" Use the powerline theme and optionally enable powerline symbols.
+" To use the symbols , , , , , , and .in the statusline
+" segments add the following to your .vimrc.before.local file:
+" let g:airline_powerline_fonts=1
+" If the previous symbols do not render for you then install a
+" powerline enabled font.
+
+" See `:echo g:airline_theme_map` for some more choices
+" Default in terminal vim is 'dark'
+        if !exists('g:airline_theme')
+            let g:airline_theme = 'powerlineish'
+        endif
+        if !exists('g:airline_powerline_fonts')
+" Use the default set of separators with a few customizations
+            let g:airline_left_sep='' " Slightly fancier than '>'
+            let g:airline_right_sep='' " Slightly fancier than '<'
+        endif
+" }
+
+" NERDTree
 	map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
 	map <leader>e :NERDTreeFind<CR>
 	nmap <leader>nt :NERDTreeFind<CR>
@@ -132,7 +210,7 @@ endfunction
 
 " undotree
 	nnoremap <Leader>u :UndotreeToggle<CR>
-	let g:undotree_SetFocusWhenToggle=1  
+	let g:undotree_SetFocusWhenToggle=1
 
 "neocomplcache
 	let g:acp_enableAtStartup = 0

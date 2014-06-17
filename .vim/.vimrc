@@ -37,7 +37,7 @@ if !has("unix")
 endif
 
 "Add a 80 chars Column line
-set colorcolumn=80
+set colorcolumn=80 
 
 "Explicitly specify Ruler
 set ruler
@@ -56,6 +56,7 @@ call pathogen#infect()
 if has("gui_running")
 	set background=dark
 	colorscheme solarized
+	let g:solarized_hitrail=1
 	set cursorline
 else
 	colorscheme delek
@@ -134,9 +135,9 @@ if has('cmdline_info')
     set whichwrap=b,s,h,l,<,>,[,] " Backspace and cursor keys wrap too
     "set scrolljump=5 " Lines to scroll when cursor leaves screen
     "set scrolloff=3 " Minimum lines to keep above and below cursor
-    set foldenable " Auto fold code
+    "set foldenable " Auto fold code
     set list
-    set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:›\ ,extends:#,nbsp:. " Highlight problematic whitespace
 " }
 
 """"""""""""""""""""""""""

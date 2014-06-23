@@ -37,7 +37,7 @@ if !has("unix")
 endif
 
 "Add a 80 chars Column line
-set colorcolumn=80 
+set colorcolumn=80
 
 "Explicitly specify Ruler
 set ruler
@@ -54,6 +54,9 @@ call pathogen#infect()
 " Genral stuff
 """"""""""""""""""""""""""
 if has("gui_running")
+	if has("gui_win32")
+		set guifont=Consolas:h11:cANSI
+	endif
 	set background=dark
 	colorscheme solarized
 	set cursorline
@@ -63,7 +66,7 @@ endif
 set hlsearch
 set incsearch
 set nu
-syntax enable 
+syntax enable
 "Tabulation set to 4
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 set ic

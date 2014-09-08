@@ -1,9 +1,10 @@
 #!/usr/bin/python
 """Just a bunch of utilties"""
 
-import sys
+import sys, os
 import argparse
 
+__VERSION__ = "0.0.1"
 PPI_DIFF_HEADERS = [ '--- a/', '+++ b/', 'diff --git a/' ]
 
 class bcolors:
@@ -61,15 +62,32 @@ class Cdbox:
         """install links in given directory (might be call as root)"""
         parser = argparse.ArgumentParser(
                  description='install cdbox on your system')
-        parser.add_argument('PATH', help='install path')
+        parser.add_argument('--path', help='install path', default='/usr/bin/')
         args = parser.parse_args(argv[1:])
         print('Installing in ... {0}'.format(args.path))
+        cdbox_path = os.path.realpath(__file__)
+        for c in self.__list_cmds('cmd_'):
+            print('{0} --> {1}'.format( cdbox_path, args.path + c))
+            os.symlink(cdbox_path, args.path + c)
+        #make a last one for cdbox itself
+        os.symlink(cdbox_path, args.path + 'cdbox')
+        print('{0} --> {1}'.format( cdbox_path, args.path + 'cdbox'))
 
     def mgm_uninstall(self, argv):
         """uninstall links in given directory (might be call as root)"""
         parser = argparse.ArgumentParser(
-                 description='remove cdbox from your system')
-        print('Uninstalling in ...')
+                 description='uninstall cdbox from your system')
+        parser.add_argument('--path', help='uninstall path', default='/usr/bin/')
+        args = parser.parse_args(argv[1:])
+        print('Uninstalling in ... {0}'.format(args.path))
+        cdbox_path = os.path.realpath(__file__)
+        for c in self.__list_cmds('cmd_'):
+            print('Deleting {0}'.format(args.path + c))
+            os.remove(args.path + c)
+        #make a last one for cdbox itself
+        os.remove(args.path + 'cdbox')
+        print('Deleting {0}'.format(args.path + 'cdbox'))
+
 
     def mgm_list(self, argv):
         """lists all management commands"""

@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ -f /usr/bin/nemo ] ; then
+	nemo --no-desktop
+else
+	nautilus --no-desktop
+fi

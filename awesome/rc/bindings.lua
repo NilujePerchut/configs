@@ -215,8 +215,8 @@ config.keys.global = awful.util.table.join(
 	     "Spawn a dmenu instance"),
 		 --
    -- Spawn nautilus
-   awful.key({ modkey,           }, "n", function () awful.util.spawn("nautilus --no-desktop") end,
-	     "Spawn a nautilus instance"),
+   awful.key({ modkey,           }, "n", function () awful.util.spawn(awful.util.getdir("config") .. "/bin/spawn_terminal") end,
+	     "Spawn a nemo/nautilus instance"),
 
 
    -- Screenshot

@@ -25,7 +25,7 @@ function awesome_cfg_install {
 #install vim
 gvim_cfg_install
 #install awesome
-awesome_cfg_install 
+awesome_cfg_install
 
 echo Configuration files installed !
 echo Enjoy

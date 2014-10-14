@@ -12,3 +12,6 @@
 	(unless (assoc package package-archive-contents)
 	  (package-refresh-contents))
 	(package-install package)))
+
+(require 'evil)
+(evil-mode 1)

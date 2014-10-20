@@ -38,4 +38,15 @@
 ;; remove whitespace before saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Tabs BSD coding style with 4 spaces
+(setq-default c-basic-offset 4 c-default-style "bsd")
+(setq-default tab-width 4 indent-tabs-mode nil)
+(setq-default highlight-tabs t)
+
+;; Auto indent lines after pressing return so I don't have to press TAB
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
+;; Neotree
+(require-package 'neotree)
+
 (provide 'init-interface)

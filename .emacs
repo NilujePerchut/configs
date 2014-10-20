@@ -3,6 +3,8 @@
 (require 'init-programming)
 (require 'init-interface)
 (require 'init-evil)
+(require 'init-non-evil-binding)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

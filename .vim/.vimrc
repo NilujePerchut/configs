@@ -98,9 +98,9 @@ function FT_vhdl()
 	setlocal tabstop=2
 	setlocal shiftwidth=2
 	setlocal softtabstop=2
-	setlocal expandtab=0
+	setlocal noexpandtab
 	"Aliases
-	iabbr dt downto 
+	iabbr dt downto
 	iabbr sig Signal
 	iabbr sl Std_Logic
 	iabbr slv Std_Logic_Vector

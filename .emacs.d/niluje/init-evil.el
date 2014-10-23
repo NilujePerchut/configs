@@ -27,6 +27,12 @@
 (define-key evil-normal-state-map (kbd "C-8") (lambda() (interactive) (elscreen-goto 8)))
 (define-key evil-normal-state-map (kbd "C-9") (lambda() (interactive) (elscreen-goto 9)))
 
+;; Switch between splits using Alt+arrows
+(define-key evil-normal-state-map (kbd "M-<up>") (lambda() (interactive) (evil-window-up 1)))
+(define-key evil-normal-state-map (kbd "M-<down>") (lambda() (interactive) (evil-window-down 1)))
+(define-key evil-normal-state-map (kbd "M-<left>") (lambda() (interactive) (evil-window-left 1)))
+(define-key evil-normal-state-map (kbd "M-<right>") (lambda() (interactive) (evil-window-right 1)))
+
 ; Powerline & Powerline-evil
 (require 'powerline)
 (powerline-default-theme)

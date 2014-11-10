@@ -55,4 +55,12 @@
 ;; Neotree
 (require-package 'neotree)
 
+;; tabs
+;;(require-package 'tabbar)
+;;(tabbar-mode)
+;;(global-set-key [M-j] 'tabbar-backward-tab)
+;;(global-set-key [M-k] 'tabbar-forward-tab)
+;;(global-set-key [M-J] 'tabbar-backward-group)
+;;(global-set-key [M-K] 'tabbar-forward-group)
+
 (provide 'init-interface)

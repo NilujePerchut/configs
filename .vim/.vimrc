@@ -208,6 +208,8 @@ if has('cmdline_info')
             let g:airline_right_sep='' " Slightly fancier than '<'
         endif
 " }
+" Do not report mixed indent with c style multiline comments
+let g:airline#extensions#whitespace#mixed_indent_algo = 1
 
 " NERDTree
 	map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>

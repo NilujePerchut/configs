@@ -12,9 +12,9 @@
 ;; scratch buffer empty
 (setq initial-scratch-message nil)
 
-(add-hook 'prog-mode-hook 'relative-line-numbers-mode t)
-(add-hook 'prog-mode-hook 'line-number-mode t)
-(add-hook 'prog-mode-hook 'column-number-mode t)
+(require 'linum-relative) ;; require-package ne fonctionne pas ici
+(global-linum-mode 1)
+(setq linum-relative-current-symbol "")
 
 ;; Change cursor color according to mode
 (setq evil-emacs-state-cursor '("red" box))
@@ -45,12 +45,6 @@
 
 ;; Auto indent lines after pressing return so I don't have to press TAB
 (define-key global-map (kbd "RET") 'newline-and-indent)
-
-;; Enable the column fill mark, globally
-(require-package 'fill-column-indicator)
-	(define-globalized-minor-mode global-fci-mode
-      fci-mode (lambda () (fci-mode 1)))
-    (global-fci-mode 1)
 
 ;; Neotree
 (require-package 'neotree)

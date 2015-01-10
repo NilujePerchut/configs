@@ -57,6 +57,12 @@ for root, _, files in os.walk(os.path.join(options.directory)):
                                                     '.jpeg',
                                                     '.png'):
             images.append(os.path.join(root, i))
+
+#If there is more screens than images, duplicate the first one
+if len(screens) > len(images):
+    for i in range(len(screens)-len(images)):
+        images.append(images[0])
+
 images = random.sample(images, len(screens))
 images = [Image.open(os.path.join(options.directory,
                                   image)) for image in images]

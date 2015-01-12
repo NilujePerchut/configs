@@ -188,6 +188,13 @@ if has('cmdline_info')
         nnoremap <silent> <leader>gg :SignifyToggle<CR>
 "}
 
+" ctrl-p {
+let g:ctrlp_working_path_mode = 'c'
+" }
+
+
+
+
 " vim-airline {
 " Set configuration options for the statusline plugin vim-airline.
 " Use the powerline theme and optionally enable powerline symbols.

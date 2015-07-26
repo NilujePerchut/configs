@@ -34,6 +34,9 @@ awful.rules.rules = {
    -- Audacious
    { rule = { class = "Audacious" },
      properties = { tag= tags[1][9] }},
+   -- Gtkwave
+   { rule = { class = "Gtkwave" },
+     properties = { tag= tags[1][7] }},
    -- Floating windows
    { rule_any = { class = { "Display.im6", "Key-mon" } },
      properties = { floating = true }},

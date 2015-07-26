@@ -206,6 +206,10 @@ config.keys.global = awful.util.table.join(
    awful.key({ modkey,           }, "v", function () awful.util.spawn(config.editor) end,
 	     "Spawn a gvim window"),
 
+   -- Spawn emacs
+   awful.key({ modkey,           }, "e", function () awful.util.spawn("emacs") end,
+	     "Spawn an emacs window"),
+		 --
    -- Spawn audacious
    awful.key({ modkey,           }, "a", function () awful.util.spawn("audacious") end,
 	     "Spawn a audacious instance"),

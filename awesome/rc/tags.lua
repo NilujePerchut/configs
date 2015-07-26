@@ -98,6 +98,8 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][4] } },
+    { rule = { class = "Gtkwave" },
+      properties = { tag = tags[1][7] } },
     { rule = { class = "Audacious" },
       properties = { tag = tags[1][9] } },
 }

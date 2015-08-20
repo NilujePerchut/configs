@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # This script is written to be launched into the configs
-# directory. 
+# directory.
 #
 # It will install all the configuration using links
 #
@@ -29,7 +29,13 @@ function emacs_cfg_install {
 	#create the new links
 	ln -s $HOME/configs/.emacs.d $HOME/.emacs.d
 	ln -s $HOME/configs/.emacs $HOME/.emacs
+}
 
+function install_oh_my_zsh_config {
+	#Remove previous config
+	rm -f $HOME/.zshrc
+	#create the new link
+	ln -s $HOME/configs/.zshrc $HOME/.zshrc
 }
 
 #install vim
@@ -38,6 +44,8 @@ gvim_cfg_install
 awesome_cfg_install
 #install emacs
 emacs_cfg_install
+#install oh my zsh
+install_oh_my_zsh_config
 
 echo Configuration files installed !
 echo Enjoy

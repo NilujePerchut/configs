@@ -1,4 +1,5 @@
 set nocompatible
+set hidden
 
 """""""""""""""""""""""""""
 " Windows like stuffs
@@ -81,7 +82,11 @@ nmap <silent> <A-k> gt
 nmap <silent> <A-j> gT
 "Use . instead of \ as leader key
 let mapleader = ","
-
+"Disable jedi by defaut
+let g:jedi#auto_initialization = 0
+let g:jedi#use_tabs_not_buffers = 1
+"Just display the buffer if trying to open an already openned file
+set switchbuf=useopen,usetab
 """"""""""""""""""""""""""
 " Language specific stuff
 """"""""""""""""""""""""""
@@ -108,6 +113,9 @@ endfunction
 
 " Python stuff
 function FT_python()
+	"Enable jedi
+	let g:jedi#auto_initialization = 1
+	let python_highlight_all=1
 	setlocal tabstop=4
 	setlocal shiftwidth=4
 	setlocal softtabstop=4
@@ -189,7 +197,8 @@ if has('cmdline_info')
 "}
 
 " ctrl-p {
-let g:ctrlp_working_path_mode = 'c'
+		let g:ctrlp_working_path_mode = 'c'
+		let g:ctrlp_switch_buffer = 'Et'
 " }
 
 

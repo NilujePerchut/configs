@@ -62,7 +62,7 @@ if has("gui_running")
 	colorscheme solarized
 	set cursorline
 else
-	colorscheme delek
+	colorscheme default
 endif
 set hlsearch
 set incsearch

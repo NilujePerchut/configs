@@ -201,8 +201,9 @@ if has('cmdline_info')
 		let g:ctrlp_switch_buffer = 'Et'
 " }
 
-
-
+" Ack.vim {
+	let g:ackprg = 'ag --nogroup --nocolor --column'
+" }
 
 " vim-airline {
 " Set configuration options for the statusline plugin vim-airline.

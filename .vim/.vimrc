@@ -171,6 +171,9 @@ if has('cmdline_info')
 " Plugins
 """"""""""""""""""""""""""
 
+" tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Ctags {
         set tags=./tags;/,~/.vimtags
 

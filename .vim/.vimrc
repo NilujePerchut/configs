@@ -245,6 +245,9 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 1
 	let NERDTreeShowHidden=0
 	let NERDTreeKeepTreeInNewTab=1
 	let g:nerdtree_tabs_open_on_gui_startup=0
+	if !has("gui_running")
+		let g:NERDTreeDirArrows=0
+	endif
 
 " undotree
 	nnoremap <Leader>u :UndotreeToggle<CR>

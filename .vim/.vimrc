@@ -267,9 +267,9 @@ let g:airline#extensions#whitespace#mixed_indent_algo = 1
 	" Define dictionary.
 	let g:neocomplcache_dictionary_filetype_lists = {
 		\ 'default' : '',
-	    \ 'vimshell' : $HOME.'/.vimshell_hist',
-	    \ 'scheme' : $HOME.'/.gosh_completions'
-	    \ }
+		\ 'vimshell' : $HOME.'/.vimshell_hist',
+		\ 'scheme' : $HOME.'/.gosh_completions'
+		\ }
 
 	" Define keyword.
     if !exists('g:neocomplcache_keyword_patterns')

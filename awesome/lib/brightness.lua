@@ -15,12 +15,11 @@ module("vbe/brightness")
 local nid = nil
 local function change(what)
    -- We don't really change the brightness, just report the change...
-   local out = awful.util.pread("xbacklight -get")
+   local out = awful.util.pread("xbacklight -get|sed -e 's/\\..*//'")
    if not out then return end
 
    out = tonumber(out)
-   local icon = icons.lookup({name = "display-brightness",
-			      type = "status"})
+   local icon = icons.lookup({name = "display-brightness", type = "status"})
 
    nid = naughty.notify({ text = string.format("%3d %%", out),
 			  icon = icon,

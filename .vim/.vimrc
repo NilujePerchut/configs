@@ -54,6 +54,7 @@ call pathogen#infect()
 """"""""""""""""""""""""""
 " Genral stuff
 """"""""""""""""""""""""""
+set t_Co=256
 if has("gui_running")
 	if has("gui_win32")
 		set guifont=Consolas:h11:cANSI
@@ -62,6 +63,7 @@ if has("gui_running")
 	colorscheme solarized
 	set cursorline
 else
+	let g:solarized_termcolors=256
 	colorscheme default
 endif
 set hlsearch

@@ -55,16 +55,16 @@ call pathogen#infect()
 " Genral stuff
 """"""""""""""""""""""""""
 set t_Co=256
+set background=dark
+set cursorline
 if has("gui_running")
 	if has("gui_win32")
 		set guifont=Consolas:h11:cANSI
 	endif
-	set background=dark
 	colorscheme solarized
-	set cursorline
 else
 	let g:solarized_termcolors=256
-	colorscheme default
+	colorscheme gruvbox
 endif
 set hlsearch
 set incsearch

@@ -12,7 +12,7 @@ function gvim_cfg_install {
 	rm -f $HOME/.vimrc
 	#create the new links
 	ln -s $HOME/configs/.vim $HOME/.vim
-	ln -s $HOME/.vim/.vimrc $HOME/.vimrc	
+	ln -s $HOME/.vim/.vimrc $HOME/.vimrc
 }
 
 function awesome_cfg_install {
@@ -24,11 +24,11 @@ function awesome_cfg_install {
 
 function emacs_cfg_install {
 	#remove any previous configuration
-	rm -rf $HOME/.emacs.d
-	rm -f $HOME/.emacs
+	rm -f $HOME/.spacemacs
+	rm -f $HOME/.emacs.d/private/cdl
 	#create the new links
-	ln -s $HOME/configs/.emacs.d $HOME/.emacs.d
-	ln -s $HOME/configs/.emacs $HOME/.emacs
+	ln -s $HOME/configs/.spacemacs $HOME/.spacemacs
+	ln -s $HOME/configs/spacemacs_layers $HOME/.emacs.d/private/cdl
 }
 
 function install_oh_my_zsh_config {

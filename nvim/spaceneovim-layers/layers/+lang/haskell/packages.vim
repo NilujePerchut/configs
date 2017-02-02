@@ -1,0 +1,6 @@
+call SpaceNeovimAddPlugin('neovimhaskell/haskell-vim', { 'for': 'haskell' })
+call SpaceNeovimAddPlugin('eagletmt/neco-ghc', { 'for': 'haskell' })
+call SpaceNeovimAddPlugin('mpickering/hlint-refactor-vim', { 'for': 'haskell' })
+call SpaceNeovimAddPlugin('Twinside/vim-hoogle', { 'for': 'haskell' })
+call SpaceNeovimAddPlugin('eagletmt/ghcmod-vim', { 'for': 'haskell' })
+call SpaceNeovimAddPlugin('Shougo/vimproc.vim', { 'for': 'haskell', 'do' : 'make' })

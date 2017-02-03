@@ -16,7 +16,7 @@ function gvim_old_cfg_install {
 }
 
 function uncache_plugged_dir {
-	tar xvf $HOME/configs/plugged.tar.bz2
+	tar xvf $HOME/configs/nvim/plugged.tar.bz2 -C $HOME/configs/nvim
 }
 
 function gvim_cfg_install {
@@ -25,7 +25,7 @@ function gvim_cfg_install {
 	rm -f $HOME/.vimrc
 	#create the new links
 	ln -s $HOME/configs/nvim $HOME/.vim
-	ln -s $HOME/.vim/.vimrc $HOME/init.vim
+	ln -s $HOME/configs/nvim/init.vim $HOME/.vimrc
 }
 
 function nvim_cfg_install {

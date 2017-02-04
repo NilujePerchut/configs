@@ -27,6 +27,7 @@
   \, '+checkers/neomake'
   \, '+completion/deoplete'
   \, '+tools/terminal'
+  \, '+tools/vcs'
   \, '+ui/airline'
   \, '+ui/toggles'
   \, '+lang/python'

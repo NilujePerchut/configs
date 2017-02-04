@@ -30,7 +30,7 @@ values."
      c-c++
      c-scope
      python
-     ;; git
+     git
      ;; markdown
      ;; org
      ;; (shell :variables

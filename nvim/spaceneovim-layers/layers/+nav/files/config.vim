@@ -1,5 +1,9 @@
 call SpaceNeovimLoadFunc(expand('<sfile>:p'), 'func.vim')
 
+let NERDTreeQuitOnOpen=1
+let NERDTreeKeepTreeInNewTab=1
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+
 let g:lmap.f = { 'name': '+files' }
 call SpaceNeovimNMap('fs', 'save-buffer', 'update')
 call SpaceNeovimNMap('ft', 'nerdtree-toggle', 'NERDTreeToggle')

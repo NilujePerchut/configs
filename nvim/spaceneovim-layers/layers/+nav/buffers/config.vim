@@ -2,6 +2,11 @@
 "call SpaceNeovimNMap('<Tab>', 'last buffer', 'b#')
 
 let g:lmap.b = { 'name': '+buffers' }
+if has('nvim')
+  call SpaceNeovimNMap('bb', 'choose-buffer', 'Denite -auto-resize=true buffer')
+else
+  call SpaceNeovimNMap('bb', 'choose-buffer', 'Unite -start-insert -direction=botright  buffer')
+endif
 call SpaceNeovimNMap('bd', 'kill-this-buffer', 'bd')
 call SpaceNeovimNMap('bD', 'force-kill-this-buffer', 'bd!')
 call SpaceNeovimNMap('bn', 'next-buffer', 'bnext!')

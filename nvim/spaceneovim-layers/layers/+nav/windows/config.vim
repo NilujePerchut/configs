@@ -19,6 +19,7 @@ call SpaceNeovimNMap('wh', 'window-left', 'wincmd h')
 call SpaceNeovimNMap('wl', 'window-right', 'wincmd l')
 call SpaceNeovimNMap('ww', 'window-other', 'wincmd w')
 call SpaceNeovimNMap('wd', 'window-close', 'wincmd c')
+call SpaceNeovimNMap('wr', 'window-rotate', 'wincmd r')
 
 if has('nvim')
   " Terminal specific mappings
@@ -28,4 +29,5 @@ if has('nvim')
   call SpaceNeovimBind('tmap', 'wl', 'window-right', 'wincmd l', 1)
   call SpaceNeovimBind('tmap', 'ww', 'window-other', 'wincmd w', 1)
   call SpaceNeovimBind('tmap', 'wd', 'window-close', 'wincmd c', 1)
+  call SpaceNeovimBind('tmap', 'wr', 'window-rotate', 'wincmd r', 1)
 endif

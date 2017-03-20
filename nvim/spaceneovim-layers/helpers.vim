@@ -30,6 +30,11 @@ function! SpaceNeovimSetFTIndentation(ft, indentation)
   execute 'au FileType ' . a:ft . ' setlocal expandtab shiftwidth=' . l:indent . ' tabstop=' . l:indent
 endfunction
 
+function! SpaceNeovimSetFTIndentationNoExpand(ft, indentation)
+  let l:indent = get(g:, 'sp_' . a:ft . '_indentation', a:indentation)
+  execute 'au FileType ' . a:ft . ' setlocal noexpandtab shiftwidth=' . l:indent . ' tabstop=' . l:indent
+endfunction
+
 function! SpaceNeovimAddPlugin(name, config)
   " Add a plugin to the list of plugins
   if exists('g:spaceneovim_plugins')

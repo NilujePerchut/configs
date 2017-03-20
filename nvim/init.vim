@@ -33,6 +33,7 @@
   \, '+ui/toggles'
   \, '+lang/python'
   \, '+lang/c'
+  \, '+lang/vhdl'
   \]
 
   let g:dotspaceneovim_additional_plugins = [

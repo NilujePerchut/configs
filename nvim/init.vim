@@ -148,6 +148,11 @@ call spaceneovim#bootstrap()
 
   set noswapfile
 
+  " Highlight problematic whitespace & tabs
+  set list
+  set listchars=tab:\ \ ,trail:_,extends:#,nbsp:.
+  highlight SpecialKey ctermfg=7 guifg=red
+
   call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
 
   " Load external user-config if found

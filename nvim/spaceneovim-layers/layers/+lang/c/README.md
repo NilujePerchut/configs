@@ -1,4 +1,4 @@
-# C Layer
+# C/C++ Layer
 
 ## Table of contents
 
@@ -11,7 +11,7 @@
 
 ## Description
 
-This layer provides support for the C language with the following packages:
+This layer provides support for the C/C++ language with the following packages:
 
 * no package yet
 

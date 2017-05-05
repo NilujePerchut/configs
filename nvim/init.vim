@@ -29,6 +29,7 @@
   \, '+tools/terminal'
   \, '+tools/org'
   \, '+tools/vcs'
+  \, '+tools/tagbar'
   \, '+ui/airline'
   \, '+ui/toggles'
   \, '+lang/python'

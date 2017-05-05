@@ -1,0 +1,1 @@
+call SpaceNeovimAddPlugin('majutsushi/tagbar', {})

@@ -155,6 +155,9 @@ call spaceneovim#bootstrap()
 
   call leaderGuide#register_prefix_descriptions('<Space>', 'g:lmap')
 
+  set wildmenu
+  set wildmode=longest:full,full
+
   " Load external user-config if found
   if filereadable(s:config_dir . '/user-config.vim')
     execute 'source ' . s:config_dir . '/user-config.vim'

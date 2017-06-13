@@ -23,3 +23,11 @@ call SpaceNeovimNMap('thh', 'highlight-current-line-globally', 'setlocal invcurs
 call SpaceNeovimNMap('thc', 'highlight-indentation-current-column', 'setlocal invcursorcolumn')
 call SpaceNeovimNMap('thp', 'rainbow-parenthesis', 'RainbowToggle')
 call SpaceNeovimNMap('ths', 'highlight-search', 'set hlsearch!')
+
+let g:lmap.t.f = { 'name': '+folding' }
+call SpaceNeovimNMap('tfd', 'disable-folding', 'set nofoldenable')
+call SpaceNeovimNMap('tfi', 'indent-folding', 'set foldenable \| set foldmethod=indent')
+call SpaceNeovimNMap('tfm', 'marker-folding', 'set foldenable \| set foldmethod=marker')
+call SpaceNeovimNMap('tff', 'toogle-full-section', 'normal! zA')
+call SpaceNeovimNMap('tfa', 'fold-all', 'normal! zM')
+call SpaceNeovimNMap('tfu', 'unfold-all', 'normal! zR')

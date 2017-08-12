@@ -1,0 +1,15 @@
+Needed packages for Ubuntu 16.04LTS
+
+Awesome:
+========
+awesome
+awesome-extra
+pavucontrol
+nemo
+audacious
+
+gVim:
+========
+exuberant-ctags
+silversearcher-ag
+ack-grep

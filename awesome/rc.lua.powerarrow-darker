@@ -1,8 +1,8 @@
 --[[
-
-     Powerarrow Darker Awesome WM config 2.0
-     github.com/copycat-killer
-
+                                             
+     Powerarrow Darker Awesome WM config 2.0 
+     github.com/copycat-killer               
+                                             
 --]]
 
 -- {{{ Required libraries
@@ -49,10 +49,7 @@ function run_once(cmd)
 end
 
 run_once("urxvtd")
--- Turn off the Touchpad on osdegirouette
-run_once("synclient TouchpadOff=1")
 run_once("unclutter -root")
-run_once("nm-applet &")
 -- }}}
 
 -- {{{ Variable definitions
@@ -63,7 +60,7 @@ beautiful.init(os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker/t
 -- common
 modkey     = "Mod4"
 altkey     = "Mod1"
-terminal   = "gnome-terminal" or "urxvtc" or "xterm"
+terminal   = "urxvtc" or "xterm"
 editor     = os.getenv("EDITOR") or "nano" or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -81,7 +78,6 @@ local layouts = {
     awful.layout.suit.tile.bottom,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.tile.left
 }
 
 -- quake terminal
@@ -93,10 +89,8 @@ end
 
 -- {{{ Tags
 tags = {
-   names = { "[1:files]", "[2:code]", "[3:ssh]", "4", "5",
-             "6", "7", "[8:www]", "[9:sic]"},
-   layout = { layouts[1], layouts[6], layouts[6], layouts[6], layouts[6],
-              layouts[6], layouts[6], layouts[6], layouts[1]}
+   names = { "1", "2", "3", "4", "5"},
+   layout = { layouts[1], layouts[2], layouts[3], layouts[1], layouts[4] }
 }
 
 for s = 1, screen.count() do
@@ -198,12 +192,12 @@ cpuwidget = lain.widgets.cpu({
 })
 
 -- Coretemp
--- tempicon = wibox.widget.imagebox(beautiful.widget_temp)
--- tempwidget = lain.widgets.temp({
---     settings = function()
---         widget:set_text(" " .. coretemp_now .. "°C ")
---     end
--- })
+tempicon = wibox.widget.imagebox(beautiful.widget_temp)
+tempwidget = lain.widgets.temp({
+    settings = function()
+        widget:set_text(" " .. coretemp_now .. "°C ")
+    end
+})
 
 -- / fs
 fsicon = wibox.widget.imagebox(beautiful.widget_hdd)
@@ -236,41 +230,34 @@ batwidget = lain.widgets.bat({
     end
 })
 
--- Send a command to audicious
-local function audacious(command)
-   awful.util.spawn("audacious " .. command, false)
-end
-
--- Pulseaudio volume
+-- ALSA volume
 volicon = wibox.widget.imagebox(beautiful.widget_vol)
-volumewidget = lain.widgets.pulseaudio({
+volumewidget = lain.widgets.alsa({
     settings = function()
-	-- Assumes that the volume is the same between left and right
-	vlevel = volume_now.left .. "%"
-        if volume_now.muted == "yes" then
-            vlevel = vlevel .. " M"
+        if volume_now.status == "off" then
+            volicon:set_image(beautiful.widget_vol_mute)
+        elseif tonumber(volume_now.level) == 0 then
+            volicon:set_image(beautiful.widget_vol_no)
+        elseif tonumber(volume_now.level) <= 50 then
+            volicon:set_image(beautiful.widget_vol_low)
+        else
+            volicon:set_image(beautiful.widget_vol)
         end
 
-        widget:set_markup(lain.util.markup("#7493d2", vlevel))
+        widget:set_text(" " .. volume_now.level .. "% ")
     end
 })
 
-volumewidget.widget:buttons(awful.util.table.join(
-    awful.button({}, 1, function() -- left click
-        awful.util.spawn("pavucontrol")
-    end)
-))
-
 -- Net
--- neticon = wibox.widget.imagebox(beautiful.widget_net)
--- neticon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(iptraf) end)))
--- netwidget = lain.widgets.net({
---     settings = function()
---         widget:set_markup(markup("#7AC82E", " " .. net_now.received)
---                           .. " " ..
---                           markup("#46A8C3", " " .. net_now.sent .. " "))
---     end
--- })
+neticon = wibox.widget.imagebox(beautiful.widget_net)
+neticon:buttons(awful.util.table.join(awful.button({ }, 1, function () awful.util.spawn_with_shell(iptraf) end)))
+netwidget = lain.widgets.net({
+    settings = function()
+        widget:set_markup(markup("#7AC82E", " " .. net_now.received)
+                          .. " " ..
+                          markup("#46A8C3", " " .. net_now.sent .. " "))
+    end
+})
 
 -- Separators
 spr = wibox.widget.textbox(' ')
@@ -373,17 +360,17 @@ for s = 1, screen.count() do
     end
 
     right_layout = wibox.layout.fixed.horizontal()
+    if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(spr)
-    -- right_layout_add(mpdicon, mpdwidget)
+    right_layout_add(mpdicon, mpdwidget)
     right_layout_add(volicon, volumewidget)
     --right_layout_add(mailicon, mailwidget)
     right_layout_add(memicon, memwidget)
     right_layout_add(cpuicon, cpuwidget)
-    -- right_layout_add(tempicon, tempwidget)
-    -- right_layout_add(fsicon, fswidget)
+    right_layout_add(tempicon, tempwidget)
+    right_layout_add(fsicon, fswidget)
     right_layout_add(baticon, batwidget)
-    if s == 1 then right_layout:add(wibox.widget.systray()) end
-    --right_layout_add(neticon,netwidget)
+    right_layout_add(neticon,netwidget)
     right_layout_add(mytextclock, spr)
     right_layout_add(mylayoutbox[s])
 
@@ -417,22 +404,20 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "Escape", awful.tag.history.restore),
 
     -- Non-empty tag browsing
-    -- Do jot interfere with gvim keybinding
-    -- awful.key({ altkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
-    -- awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
+    awful.key({ altkey }, "Left", function () lain.util.tag_view_nonempty(-1) end),
+    awful.key({ altkey }, "Right", function () lain.util.tag_view_nonempty(1) end),
 
     -- Default client focus
-    -- Do jot interfere with gvim keybinding
-    -- awful.key({ altkey }, "k",
-    --     function ()
-    --         awful.client.focus.byidx( 1)
-    --         if client.focus then client.focus:raise() end
-    --     end),
-    -- awful.key({ altkey }, "j",
-    --     function ()
-    --         awful.client.focus.byidx(-1)
-    --         if client.focus then client.focus:raise() end
-    --     end),
+    awful.key({ altkey }, "k",
+        function ()
+            awful.client.focus.byidx( 1)
+            if client.focus then client.focus:raise() end
+        end),
+    awful.key({ altkey }, "j",
+        function ()
+            awful.client.focus.byidx(-1)
+            if client.focus then client.focus:raise() end
+        end),
 
     -- By direction client focus
     awful.key({ modkey }, "j",
@@ -496,40 +481,33 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "q",      awesome.quit),
 
     -- Dropdown terminal
-    awful.key({ modkey,           }, "z",      function () quakeconsole[mouse.screen]:toggle() end),
+    awful.key({ modkey,	          }, "z",      function () quakeconsole[mouse.screen]:toggle() end),
 
     -- Widgets popups
     awful.key({ altkey,           }, "c",      function () lain.widgets.calendar.show(7) end),
     awful.key({ altkey,           }, "h",      function () fswidget.show(7) end),
 
-    -- Pulseaudio volume control
-    awful.key({ }, "XF86AudioRaiseVolume",
+    -- ALSA volume control
+    awful.key({ altkey }, "Up",
         function ()
-            os.execute(string.format("pactl set-sink-volume %s +1%%", volumewidget.sink))
+            os.execute(string.format("amixer set %s 1%%+", volumewidget.channel))
             volumewidget.update()
         end),
-    awful.key({ }, "XF86AudioLowerVolume",
+    awful.key({ altkey }, "Down",
         function ()
-            os.execute(string.format("pactl set-sink-volume %s -1%%", volumewidget.sink))
+            os.execute(string.format("amixer set %s 1%%-", volumewidget.channel))
             volumewidget.update()
         end),
-    awful.key({ }, "XF86AudioMute",
+    awful.key({ altkey }, "m",
         function ()
-            os.execute(string.format("pactl set-sink-mute %s toggle", volumewidget.sink))
+            os.execute(string.format("amixer set %s toggle", volumewidget.channel))
             volumewidget.update()
         end),
     awful.key({ altkey, "Control" }, "m",
         function ()
-            os.execute(string.format("pactl set-sink-volume %s 100%%", volumewidget.sink))
+            os.execute(string.format("amixer set %s 100%%", volumewidget.channel))
             volumewidget.update()
         end),
-
-    -- Audacious control
-    awful.key({ }, "XF86AudioPlay", function() audacious("--play") end),
-    awful.key({ }, "XF86AudioPause",function() audacious("--play-pause") end),
-    awful.key({ }, "XF86AudioStop", function() audacious("--stop") end),
-    awful.key({ }, "XF86AudioNext", function() audacious("--fwd") end),
-    awful.key({ }, "XF86AudioPrev", function() audacious("--rew") end),
 
     -- MPD control
     awful.key({ altkey, "Control" }, "Up",
@@ -558,10 +536,8 @@ globalkeys = awful.util.table.join(
 
     -- User programs
     awful.key({ modkey }, "q", function () awful.util.spawn(browser) end),
-    awful.key({ modkey }, "v", function () awful.util.spawn(gui_editor) end),
+    awful.key({ modkey }, "s", function () awful.util.spawn(gui_editor) end),
     awful.key({ modkey }, "g", function () awful.util.spawn(graphics) end),
-    awful.key({ modkey }, "a", function () awful.util.spawn("audacious") end),
-    awful.key({ modkey }, "n", function () awful.util.spawn("nemo --no-desktop") end),
 
     --[[ Default
     -- Prompt
@@ -579,7 +555,7 @@ globalkeys = awful.util.table.join(
     --]]
 
     -- dmenu
-    awful.key({ modkey }, "d", function ()
+    awful.key({ modkey }, "x", function ()
         awful.util.spawn(string.format("dmenu_run -i -fn 'Tamsyn' -nb '%s' -nf '%s' -sb '%s' -sf '%s'",
         beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
 		end)
@@ -669,15 +645,15 @@ awful.rules.rules = {
                      raise = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
-                     size_hints_honor = false } },
+	                   size_hints_honor = false } },
     { rule = { class = "Firefox" },
-          properties = { tag = tags[1][8] } },
+          properties = { tag = tags[1][1] } },
 
     { rule = { instance = "plugin-container" },
           properties = { tag = tags[1][1] } },
 
-    { rule = { class = "Gimp" },
-          properties = { tag = tags[1][9] } },
+	  { rule = { class = "Gimp" },
+     	    properties = { tag = tags[1][4] } },
 
     { rule = { class = "Gimp", role = "gimp-image-window" },
           properties = { maximized_horizontal = true,

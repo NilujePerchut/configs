@@ -38,8 +38,10 @@ function nvim_cfg_install {
 function awesome_cfg_install {
 	#remove any previous configuration
 	rm -rf $HOME/.config/awesome
+	rm -f $HOME/.xscreensaver
 	#create the new links
 	ln -s $HOME/configs/awesome $HOME/.config/awesome
+	ln -s $HOME/configs/.xscreensaver $HOME/.xscreensaver
 }
 
 function emacs_cfg_install {

@@ -53,6 +53,7 @@ run_once("urxvtd")
 run_once("synclient TouchpadOff=1")
 run_once("unclutter -root")
 run_once("nm-applet &")
+run_once("xscreensaver -nosplash &")
 -- }}}
 
 -- {{{ Variable definitions

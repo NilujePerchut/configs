@@ -24,8 +24,7 @@
   \, '+nav/windows'
   \, '+nav/start-screen'
   \, '+nav/text'
-  \, '+checkers/neomake'
-  \, '+completion/deoplete'
+  \, '+checkers/syntastic'
   \, '+tools/terminal'
   \, '+tools/org'
   \, '+tools/vcs'
@@ -55,7 +54,7 @@
   " Map the leader key to <Space>
   let g:mapleader = ' '
   " Shorten the time before the vim-leader-guide buffer appears
-  set timeoutlen=100
+  set timeoutlen=300
   " Enable line numbers
   " Set 7 lines to the cursor - when moving vertically using j/k
   set scrolloff=0

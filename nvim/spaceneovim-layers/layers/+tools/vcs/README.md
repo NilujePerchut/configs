@@ -10,7 +10,8 @@
 
 ## Description
 
-This layer provides support for vcs. Only supports git for the moment (via vim-fugitive).
+This layer provides support for vcs. Only supports git for the moment.
+
 
 ### Layer
 
@@ -20,7 +21,8 @@ To use this configuration layer, add it to your `init.vim`/`.vimrc`. You will ne
 
 | Key Binding | Description                                                    |
 |-------------|----------------------------------------------------------------|
-| SPC c       | git commit                                                     | 
-| SPC d       | git diff                                                       | 
-| SPC r       | git remove                                                     | 
-| SPC s       | git status                                                     | 
+| SPC gc       | git commit                                                    |
+| SPC gd       | git diff                                                      |
+| SPC gr       | git remove                                                    |
+| SPC gs       | git status                                                    |
+| SPC gm       | open a vimagit buffer                                         |

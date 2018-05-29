@@ -48,11 +48,17 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
+hostname = awful.util.pread('uname -n'):gsub('\n', '')
+if (hostanme == "osdemammouth") or (hostname == "osdegirouette") then
+    run_once("nm-applet &")
+    if hostname == "osdegirouette" then
+        run_once("synclient TouchpadOff=1")
+    end
+end
+
+-- Common
 run_once("urxvtd")
--- Turn off the Touchpad on osdegirouette
-run_once("synclient TouchpadOff=1")
 run_once("unclutter -root")
-run_once("nm-applet &")
 run_once("xscreensaver -nosplash &")
 -- }}}
 

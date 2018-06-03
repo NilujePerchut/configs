@@ -19,6 +19,17 @@ function uncache_plugged_dir {
 	tar xvf $HOME/configs/nvim/plugged.tar.bz2 -C $HOME/configs/nvim
 }
 
+function i3_cfg_install {
+	# Remove any previous configuration
+	rm -rf $HOME/.config/i3
+	rm -rf $HOME/.config/gsimplecal
+	# Create the new links
+	mkdir $HOME/.config/i3
+	ln -s $HOME/configs/i3/config $HOME/.config/i3/config
+	mkdir $HOME/.config/gsimplecal
+	ln -s $HOME/configs/i3/gsimplecal_config $HOME/.config/gsimplecal/config
+}
+
 function gvim_cfg_install {
 	#remove any previous configuration
 	rm -rf $HOME/.vim
@@ -60,7 +71,7 @@ function install_oh_my_zsh_config {
 	ln -s $HOME/configs/.zshrc $HOME/.zshrc
 }
 #### install old vim
-gvim_old_cfg_install
+#gvim_old_cfg_install
 
 #### Restore plugged cache
 uncache_plugged_dir
@@ -79,6 +90,9 @@ emacs_cfg_install
 
 #### install oh my zsh
 install_oh_my_zsh_config
+
+#### install i3
+i3_cfg_install
 
 echo Configuration files installed !
 echo Enjoy

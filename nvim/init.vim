@@ -67,7 +67,6 @@
   set laststatus=2
   "Add a 80 chars Column line
   set colorcolumn=80
-
   let g:solarized_termcolors=256
   set t_Co=256
 " }}}
@@ -104,6 +103,7 @@ call spaceneovim#bootstrap()
   else
     let g:solarized_termcolors=256
     colorscheme gruvbox
+    set mouse=a
   endif
 
   "Switch between Vim buffers using ALT+arrows

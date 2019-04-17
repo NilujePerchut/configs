@@ -41,6 +41,7 @@ function gvim_cfg_install {
 
 function nvim_cfg_install {
 	#remove any previous configuration
+	mkdir -p $HOME/.config
 	rm -rf $HOME/.config/nvim
 	#create the new link
 	ln -s $HOME/configs/nvim $HOME/.config/nvim

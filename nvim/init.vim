@@ -36,6 +36,7 @@
   \, '+lang/vhdl'
   \, '+lang/verilog'
   \, '+lang/make'
+  \, '+lang/tex'
   \]
 
   let g:dotspaceneovim_additional_plugins = [

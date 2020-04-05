@@ -113,6 +113,15 @@ call spaceneovim#bootstrap()
   nmap <silent> <A-Down> :wincmd j<CR>
   nmap <silent> <A-Left> :wincmd h<CR>
   nmap <silent> <A-Right> :wincmd l<CR>
+  "Same with Ctrl-h|j|k|l
+  nmap <silent> <A-k> :wincmd k<CR>
+  nmap <silent> <A-j> :wincmd j<CR>
+  nmap <silent> <A-h> :wincmd h<CR>
+  nmap <silent> <A-l> :wincmd l<CR>
+
+  "Switch tabs with Ctrl-Shift-j|k
+  noremap <silent> <C-j> :tabnext<CR>
+  noremap <silent> <C-k> :tabprevious<CR>
 
   "Set basit UI options
   set cursorline

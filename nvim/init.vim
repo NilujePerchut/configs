@@ -129,6 +129,9 @@ call spaceneovim#bootstrap()
   set incsearch
   set ic
 
+  "Disable sound and visual bell
+  set belloff=all
+
   "Make selection behaves like windows
   behave mswin
   " backspace and cursor keys wrap to previous/next line

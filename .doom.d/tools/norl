@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+
+import sys
+import argparse
+
+def norl(c_content, default):
+    """The Niluje or Linux style detector"""
+    # Prerequies:
+    #   1) We are using tabs
+    #   2) We are using Linux indentation rules
+    #
+    # We just want to determine if we are using 4 or 8 spaces per tabs
+
+    in_multiline_function_header = False
+    for line in c_content.readlines():
+        line = line
+        # The prefered marker is a multiline function header
+        # Also focus on static one to ease the parsing
+        # Lets look for it
+        if not in_multiline_function_header:
+            if not line.startswith("static "):
+                continue
+            if line.count("(") <= line.count(")"):
+                 continue
+            in_multiline_function_header = True
+            first_line = line
+        else:
+            opening_index = first_line.index("(")
+            line_minus_tabs = line.lstrip("\t")
+            leading_tabs = len(line) - len(line_minus_tabs)
+            padding_spaces = len(line_minus_tabs) -\
+                len(line_minus_tabs.lstrip(" "))
+            computed_width = 8 * leading_tabs + padding_spaces
+            if computed_width == (opening_index + 1):
+                return "linux"
+            else:
+                return "niluje"
+    return default
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--default", default="niluje")
+    parser.add_argument("c_file", type=argparse.FileType())
+    args = parser.parse_args()
+    print(norl(args.c_file, args.default))
+    sys.exit(0)

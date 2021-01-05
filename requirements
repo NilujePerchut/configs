@@ -1,15 +1,27 @@
-Needed packages for Ubuntu 16.04LTS
-
-Awesome:
+i3:
 ========
-awesome
-awesome-extra
+i3
+i3_lock
+xscreensaver
 pavucontrol
 nemo
 audacious
+feh
+py3status (python parckage)
 
-gVim:
+gVim
 ========
+gvim
+neovim
 exuberant-ctags
 silversearcher-ag
 ack-grep
+
+zsh
+===
+zsh
+
+emacs
+=====
+emacs >= 26.1
+ripgrep

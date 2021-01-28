@@ -7,7 +7,7 @@ pavucontrol
 nemo
 audacious
 feh
-py3status (python parckage)
+py3status (python package, must be install with pip --user)
 
 gVim
 ========

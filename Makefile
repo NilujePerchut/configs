@@ -4,7 +4,7 @@ CONFIG_DIR := $(CURDIR)
 # Install/Remove everything
 ######################
 
-PHONY == all clean
+PHONY: all clean
 all: xvim zsh i3 doom_emacs
 clean: clean_xvim clean_zsh i3_clean clean_doom_emacs
 

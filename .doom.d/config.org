@@ -8,10 +8,11 @@
 
 ** Host dependant configuration
 
-Some settings needs to be adjusted according to where we are.
+Some settings need to be adjusted according to where we are (@work, @home).
+Rely on hostname to make the choice.
 
 Setting the projectile project path speeds up the launching time by 20 on
-the @work configuration.
+the @work configuration where the filesystem is very slow.
 
 #+begin_src elisp
 (if (string= "blupblup" (system-name))
@@ -30,24 +31,24 @@ the @work configuration.
 
 *** Theme
 
-Use Gruvbox because Solarized just render awful on emacs
+Use Gruvbox because Solarized is just a desaster on emacs
 #+begin_src elisp
 (setq doom-theme 'doom-gruvbox)
 #+end_src
 
 *** UI basic elements
 
-Show the menu bar because I am an Emacs beginer
+Show the menu bar because I am an Emacs beginner and I need backup
 #+begin_src elisp
 (menu-bar-mode 1)
 #+end_src
 
-Display line number in relative form. Just disable this if Emacs is slow
+Display line number in relative form. Just disable this if Emacs becomes too slow
 #+begin_src elisp
 (setq display-line-numbers-type 'relative)
 #+end_src
 
-Activates the rainbow delimiters for only prog modes
+Activates the rainbow delimiters for prog modes only
 #+begin_src elisp
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 #+end_src
@@ -103,7 +104,7 @@ Also on SPC o n
 
 *** Copy / Paste buffer stuff
 
-Just a foolish attempt to handle copy and paste in the less bad manner
+Just a foolish attempt to handle copy and paste in the least undesirable way
 #+begin_src elisp
 (when (> (display-color-cells) 16)         ;if not in CLI
   (setq x-select-enable-clipboard t
@@ -111,7 +112,7 @@ Just a foolish attempt to handle copy and paste in the less bad manner
         'x-cut-buffer-or-selection-value))
 #+end_src
 
-Delete selection if text is inserted (windows lefts from my past days)
+Delete selection if text is inserted (Windows left-over from my past days)
 #+begin_src elisp
 (delete-selection-mode 1)
 #+end_src

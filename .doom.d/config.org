@@ -1,3 +1,9 @@
+#+TITLE: Niluje's Doom Emacs configuration
+#+AUTHOR: Niluje
+#+OPTIONS: num:nil
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+
 * Doom emacs literate configuration
 
 ** Host dependant configuration
@@ -18,6 +24,7 @@ the @work configuration.
 	  org-directory "~/Work_local/org"
 	  projectile-project-search-path '("~/Work_local")))
 #+end_src
+
 
 ** UI
 

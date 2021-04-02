@@ -1,8 +1,8 @@
 (if (string= "blupblup" (system-name))
     (setq user-full-name "cdebarge"
 	  user-mail-address "cdebarge@nanoxplore.com"
-	  org-directory "~/Work/org"
-	  projectile-project-search-path '("~/Work/SVN_HOME"))
+	  org-directory "~/work/org"
+	  projectile-project-search-path '("~/work/SVN_HOME"))
     (setq user-full-name "Niluje"
 	  user-mail-address "debarge.cedric@nanoxplore.com"
 	  org-directory "~/Work_local/org"

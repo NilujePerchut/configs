@@ -31,9 +31,9 @@ the @work configuration where the filesystem is very slow.
 
 *** Theme
 
-Use Gruvbox because Solarized is just a desaster on emacs
+Use Gruvbox or one dark because Solarized is just a disaster on emacs
 #+begin_src elisp
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
 #+end_src
 
 *** UI basic elements

@@ -8,7 +8,7 @@
 	  org-directory "~/Work_local/org"
 	  projectile-project-search-path '("~/Work_local")))
 
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-one)
 
 (menu-bar-mode 1)
 

@@ -53,7 +53,16 @@ Activates the rainbow delimiters for prog modes only
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 #+end_src
 
-Highlight whitespaces and anything beyond 80th column for prog modes only
+Highlight whitespaces and anything beyond 80th column for prog modes only.
+
+Also provides a function to disable the whitespace-mode for prog modes
+that do not need it (ex: org mode). ~prog-mode-hook~ is sadely executed AFTER
+mode specific hooks and might reactivate whitespaces.
+
+To avoid that, the ~niluje/turn-off-whitespace-mode~ function sets the
+~whitespace-style~ to ~nil~. This will ensure that, even reactivated,
+it won't be visible.
+
 #+begin_src elisp
 (use-package! whitespace
   :config
@@ -65,6 +74,11 @@ lines-tail newline newline-mark)
       (space-mark   ?\xA0  [?\u00A4]     [?_])
       (newline-mark ?\n    [?¬ ?\n])
       (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]))))
+
+(defun niluje/turn-off-whitespace-mode ()
+  "Unconditionally turn off Whitespace mode."
+  (interactive)
+  (setq-local whitespace-style nil))
 
 (add-hook 'prog-mode-hook (global-whitespace-mode +1))
 #+end_src
@@ -221,3 +235,11 @@ Always add closing timestamp to tasks
 #+begin_src elisp
 (setq org-log-done 'time)
 #+end_src
+
+Disable whitespace mode for org mode
+#+begin_src elisp
+(add-hook 'org-mode-hook #'niluje/turn-off-whitespace-mode)
+#+end_src
+
+* TODOS
+** TODO Fix the disable-whitespace method in a more elegant way.

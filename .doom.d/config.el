@@ -27,6 +27,11 @@ lines-tail newline newline-mark)
       (newline-mark ?\n    [?¬ ?\n])
       (tab-mark     ?\t    [?\u00BB ?\t] [?\\ ?\t]))))
 
+(defun niluje/turn-off-whitespace-mode ()
+  "Unconditionally turn off Whitespace mode."
+  (interactive)
+  (setq-local whitespace-style nil))
+
 (add-hook 'prog-mode-hook (global-whitespace-mode +1))
 
 (map! :leader
@@ -117,3 +122,5 @@ lines-tail newline newline-mark)
 (setq org-use-fast-todo-selection nil)
 
 (setq org-log-done 'time)
+
+(add-hook 'org-mode-hook #'niluje/turn-off-whitespace-mode)

@@ -5,8 +5,8 @@ CONFIG_DIR := $(CURDIR)
 ######################
 
 PHONY: all clean
-all: xvim zsh i3 doom_emacs
-clean: clean_xvim clean_zsh i3_clean clean_doom_emacs
+all: xvim zsh i3 doom_emacs vscode
+clean: clean_xvim clean_zsh i3_clean clean_doom_emacs clean_vscode
 
 ######################
 # MISC
@@ -127,3 +127,23 @@ doom_emacs: clean_doom_emacs
 	git clone --depth 1 https://github.com/hlissner/doom-emacs $(HOME)/.emacs.d
 	@# TODO: find a way to remove the interactive mode
 	$(HOME)/.emacs.d/bin/doom install
+
+######################
+# VS Code
+######################
+
+PHONY += vscode clean_vscode archive_vscode
+
+vscode: clean_vscode
+	mkdir -p $(HOME)/.vscode
+	mkdir -p $(HOME)/.config/Code
+	cat $(CONFIG_DIR)/vscode/extensions | xargs -n1 code --install-extension
+	ln -s $(CONFIG_DIR)/vscode/settings.json $(HOME)/.config/Code/User/settings.json
+	ln -s $(CONFIG_DIR)/vscode/keybindings.json $(HOME)/.config/Code/User/keybindings.json
+
+clean_vscode:
+	rm -rf $(HOME)/.vscode
+	rm -rf $(HOME)/.config/Code
+
+archive_vscode:
+	code --list-extensions > $(CONFIG_DIR)/vscode/extensions

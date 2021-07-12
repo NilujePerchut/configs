@@ -164,8 +164,14 @@ Same as Verilog.
 See with RTL masters for more efficient settings.
 Keep a basic TAB, 2 chars for the moment.
 #+begin_src elisp
-(setq vhdl-basic-offset 2)
-(setq vhdl-indent-tabs-mode t)
+(defun niluje/setup-vhdl ()
+  "Sets VHDL stuff"
+    (interactive)
+    (setq vhdl-basic-offset 2)
+    (setq vhdl-indent-tabs-mode t)
+    (setq tab-width 2))
+
+(add-hook 'vhdl-mode-hook 'niluje/setup-vhdl)
 #+end_src
 
 *** C

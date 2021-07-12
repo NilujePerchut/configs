@@ -78,8 +78,15 @@ lines-tail newline newline-mark)
   (function (lambda ()
           (setq evil-shift-width 2))))
 
-(setq vhdl-basic-offset 2)
-(setq vhdl-indent-tabs-mode t)
+(defun niluje/setup-vhdl ()
+  "Sets VHDL stuff"
+    (interactive)
+    (vhdl-tools-mode 1)
+    (setq vhdl-basic-offset 2)
+    (setq vhdl-indent-tabs-mode t)
+    (setq tab-width 2))
+
+(add-hook 'vhdl-mode-hook 'niluje/setup-vhdl)
 
 (defun niluje/setup-c-indent (n)
   "Sets c indent style for this buffer"

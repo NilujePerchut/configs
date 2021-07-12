@@ -5,6 +5,7 @@
   "Automatic installation of spaceneovim.
   if has('nvim')
     let s:config_dir = $HOME . '/.config/nvim'
+    set guicursor=
   else
     let s:config_dir = $HOME . '/.vim'
   endif
@@ -130,7 +131,9 @@ call spaceneovim#bootstrap()
   set ic
 
   "Disable sound and visual bell
-  set belloff=all
+  if v:version > 704
+    set belloff=all
+  endif
 
   "Make selection behaves like windows
   behave mswin

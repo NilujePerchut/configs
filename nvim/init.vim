@@ -1,6 +1,10 @@
 " -*- mode: vimrc -*-
 "vim: ft=vim
 
+" Set bash as syntastic shell since it is no working well with zsh
+" This does not changes the vim interactive shell
+let g:syntastic_shell = "/bin/bash"
+
 " dotspaceneovim/auto-install {{{
   "Automatic installation of spaceneovim.
   if has('nvim')

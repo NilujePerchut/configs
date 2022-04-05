@@ -23,5 +23,6 @@ endif
 
 if SpaceNeovimIsLayerEnabled('+checkers/syntastic')
   " Configure syntastic
+  let g:syntastic_python_flake8_config_file='.flake8'
 endif
 " }}}

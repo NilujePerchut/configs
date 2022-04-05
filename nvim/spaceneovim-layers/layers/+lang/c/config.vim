@@ -11,3 +11,4 @@ call SpaceNeovimSetFTIndentationNoExpand('cpp', 4)
 
 call SpaceNeovimFTNMap('c', 'mtk', 'kernel-tabs', 'set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab')
 call SpaceNeovimFTNMap('c', 'mts', 'std-tabs', 'set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab')
+call SpaceNeovimFTNMap('c', 'mtn', 'nx-tabs', 'set tabstop=4 softtabstop=4 shiftwidth=4 expandtab')

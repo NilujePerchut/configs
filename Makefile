@@ -85,7 +85,7 @@ clean_xvim: clean_gvim clean_nvim
 
 
 ######################
-# Oh my Zsh
+# Zsh
 ######################
 
 PHONY += zsh clean_zsh
@@ -93,23 +93,28 @@ PHONY += zsh clean_zsh
 clean_zsh:
 	@# Remove ohmyzsh
 	rm -rf $(HOME)/install.sh
-	rm -rf $(HOME)/.oh-my-zsh
 	@# Remove existing config
 	rm -f $(HOME)/.zshrc
+	@# Remove existing zim
+	rm -rf $(HOME)/.zimrc $(HOME)/.zim
+	@# Remove PowerLevel10 config
+	rm -rf $(HOME)/.p10k.zsh
+	@# Remove .zsh dir
+	rm -rf $(HOME)/.zsh
 
 # Assumes, zsh is installed
 zsh: clean_zsh
-	@# Install OhMyZsh
+	@# Install zim
+	rm -rf $(HOME)/.zimrc
+	ln -s $(CONFIG_DIR)/zsh/.zimrc $(HOME)/.zimrc
 	(cd $(HOME) && \
-	 wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh && \
-	 sed -i 's/exec zsh -l/exec zsh -l -c "sleep 2 \&\& exit"/' $(HOME)/install.sh && \
-	 sh $(HOME)/install.sh && \
-	 rm -rf $(HOME)/install.sh)
-	@# Create the new link
+	 wget -nv -O - https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh \
+	)
+	ln -s $(CONFIG_DIR)/zsh/.p10k.zsh $(HOME)/.p10k.zsh
 	rm -f $(HOME)/.zshrc
-	ln -s $(CONFIG_DIR)/.zshrc $(HOME)/.zshrc
-	rm -rf $(HOME)/install.sh
-	echo Please logout to finsish the oh my zsh installation
+	ln -s $(CONFIG_DIR)/zsh/.zshrc $(HOME)/.zshrc
+	ln -s $(CONFIG_DIR)/zsh $(HOME)/.zsh
+	zsh -l
 
 ######################
 # DOOM emacs
@@ -147,3 +152,4 @@ clean_vscode:
 
 archive_vscode:
 	code --list-extensions > $(CONFIG_DIR)/vscode/extensions
+

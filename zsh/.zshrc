@@ -40,6 +40,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 source ${HOME}/configs/zsh/aliases.zsh
 
+# Set the default editor to neovim
+export EDITOR=`which nvim`
+
 [ -f ${HOME}/.zshsp ] && source ${HOME}/.zshsp
 
 source ${HOME}/configs/build/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

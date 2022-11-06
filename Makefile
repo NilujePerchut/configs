@@ -7,8 +7,8 @@ BIN_DIR := $(CONFIG_DIR)/bin
 ######################
 
 PHONY: all clean
-all: xvim zsh i3 doom_emacs vscode
-clean: clean_xvim clean_zsh i3_clean clean_doom_emacs clean_vscode
+all: nvim zsh i3 doom_emacs vscode
+clean: clean_nvim clean_zsh i3_clean clean_doom_emacs clean_vscode
 
 ######################
 # MISC
@@ -49,41 +49,21 @@ i3: i3_clean register_bins
 
 
 ######################
-# vim, gvim and neovim
+# neovim
 ######################
 
-PHONY += vim_uncache clean_gvim gvim clean_nvim nvim xvim clean_xvim
-
-# Common
-vim_uncache:
-	tar xvf $(CONFIG_DIR)/nvim/plugged.tar.bz2 -C $(CONFIG_DIR)/nvim
-
-# gvim
-clean_gvim:
-	@# remove any existing configuration
-	rm -rf $(HOME)/.vim
-	rm -f $(HOME)/.vimrc
-
-gvim: vim_uncache clean_gvim
-
-	@#create the new links
-	ln -s $(CONFIG_DIR)/nvim $(HOME)/.vim
-	ln -s $(CONFIG_DIR)/nvim/init.vim $(HOME)/.vimrc
+PHONY += clean_nvim nvim
 
 # neovim
 clean_nvim:
 	@# remove any existing configuration
 	mkdir -p $(HOME)/.config
 	rm -rf $(HOME)/.config/nvim
+	rm -rf $(HOME)/.local/share/nvim
 
-nvim: vim_uncache clean_nvim
+nvim: clean_nvim
 	@# create the new link
 	ln -s $(CONFIG_DIR)/nvim $(HOME)/.config/nvim
-
-# all vim related targets
-xvim: gvim nvim
-
-clean_xvim: clean_gvim clean_nvim
 
 
 ######################

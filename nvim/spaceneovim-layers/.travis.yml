@@ -1,8 +1,0 @@
-sudo: required
-dist: trusty
-before_install:
-- gem install mdl
-- pip install --user vim-vint
-script:
-- mdl -c ./.mdlrc *.md
-- vint auto-layers.vim keybinding-helpers.vim helpers.vim

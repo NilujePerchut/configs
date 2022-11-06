@@ -1,0 +1,66 @@
+format = """
+$cmd_duration\
+$time\
+$username\
+$hostname\
+$directory\
+$c\
+$python\
+$docker_context\
+$golang\
+$rust\
+$git_branch\
+$git_status\
+> """
+
+[cmd_duration]
+min_time = 500
+format = "⏱ [$duration ](bold yellow)"
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+format = '[$time ](green)'
+
+[username]
+show_always = true
+format = "[$user](blue)"
+
+[hostname]
+ssh_only = false
+ssh_symbol = ""
+format = "@[$hostname](white) "
+disabled = false
+
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+format = "[$path](blue) "
+
+[c]
+symbol = ""
+format = '[ $symbol ($version) ](yellow)'
+
+[docker_context]
+symbol = ""
+format = '[ $symbol $context ](yellow) $path'
+
+[golang]
+symbol = ""
+format = '[ $symbol ($version) ](yellow)'
+
+[rust]
+symbol = ""
+format = '[ $symbol ($version) ](yellow)'
+
+[python]
+symbol = ""
+format = '[ ${symbol} (\($virtualenv\) )](yellow)'
+
+[git_branch]
+symbol = ""
+format = '[$symbol $branch(:$remote_branch)]($dimmed yellow) '
+
+[git_status]
+format = '[$all_status$ahead_behind ](dimmed yellow)'
+

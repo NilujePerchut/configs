@@ -1,4 +1,6 @@
 CONFIG_DIR := $(CURDIR)
+BUILD_DIR := $(CONFIG_DIR)/build
+BIN_DIR := $(CONFIG_DIR)/bin
 
 ######################
 # Install/Remove everything
@@ -95,25 +97,29 @@ clean_zsh:
 	rm -rf $(HOME)/install.sh
 	@# Remove existing config
 	rm -f $(HOME)/.zshrc
-	@# Remove existing zim
+	@# Remove existing zim [keept to unsure smooth upgrade]
 	rm -rf $(HOME)/.zimrc $(HOME)/.zim
-	@# Remove PowerLevel10 config
+	@# Remove PowerLevel10 config [keept to unsure smooth upgrade]
 	rm -rf $(HOME)/.p10k.zsh
 	@# Remove .zsh dir
 	rm -rf $(HOME)/.zsh
+	@# Remove starship config
+	rm -rf $(HOME)/.config/starship.toml
+	@# Remove zsh plugins
+	rm -rf $(BUILD_DIR)/zsh-syntax-highlighting
+	rm -rf $(BUILD_DIR)/zsh-autosuggestions
 
 # Assumes, zsh is installed
-zsh: clean_zsh
-	@# Install zim
-	rm -rf $(HOME)/.zimrc
-	ln -s $(CONFIG_DIR)/zsh/.zimrc $(HOME)/.zimrc
-	(cd $(HOME) && \
-	 wget -nv -O - https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh \
-	)
-	ln -s $(CONFIG_DIR)/zsh/.p10k.zsh $(HOME)/.p10k.zsh
+zsh: clean_zsh | $(BUILD_DIR)
+	cd $(BUILD_DIR) && \
+		curl -O https://starship.rs/install.sh && \
+		chmod +x install.sh && \
+		./install.sh --yes -b $(BIN_DIR)
+	cd $(BUILD_DIR) && git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+	cd $(BUILD_DIR) && git clone https://github.com/zsh-users/zsh-autosuggestions.git
 	rm -f $(HOME)/.zshrc
 	ln -s $(CONFIG_DIR)/zsh/.zshrc $(HOME)/.zshrc
-	ln -s $(CONFIG_DIR)/zsh $(HOME)/.zsh
+	ln -s $(CONFIG_DIR)/zsh/starship.toml $(HOME)/.config/starship.toml
 	zsh -l
 
 ######################
@@ -153,3 +159,5 @@ clean_vscode:
 archive_vscode:
 	code --list-extensions > $(CONFIG_DIR)/vscode/extensions
 
+$(BUILD_DIR):
+	mkdir -p $@

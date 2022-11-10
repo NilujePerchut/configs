@@ -78,7 +78,8 @@ return packer.startup(function(use)
 	use "neovim/nvim-lspconfig"
 
   -- Tools
-	use "nvim-orgmode/orgmode"
+  use "nvim-orgmode/orgmode"
+	use "akinsho/org-bullets.nvim"
 	use {
 		"TimUntersberger/neogit",
 		requires = {

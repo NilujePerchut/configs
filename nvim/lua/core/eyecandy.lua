@@ -30,6 +30,12 @@ lualine.setup({
 })
 
 -- Treesitter
+local status_ok, org = pcall(require, "orgmode")
+if not status_ok then
+  return
+end
+org.setup_ts_grammar()
+
 local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
   return

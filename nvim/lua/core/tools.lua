@@ -35,3 +35,17 @@ if not status_ok then
 end
 gitsigns.setup({})
 
+-- Neovim orgmode
+local status_ok, org = pcall(require, "orgmode")
+if not status_ok then
+  return
+end
+org.setup({})
+
+-- Org-bullet
+local status_ok, org_bullets = pcall(require, "org-bullets")
+if not status_ok then
+  return
+end
+org_bullets.setup()
+

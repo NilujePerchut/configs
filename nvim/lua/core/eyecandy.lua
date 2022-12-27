@@ -3,9 +3,9 @@
 -- ------------------------
 
 -- Colorscheme
-local colorscheme = "onedarkpro"
+local colorscheme = "onedark"
 
-local status_ok, colorscheme_plugin = pcall(require, colorscheme)
+local status_ok, colorscheme_plugin = pcall(require, "onedarkpro")
 if not status_ok then
   return
 end

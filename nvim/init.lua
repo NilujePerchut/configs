@@ -1,13 +1,20 @@
--- Just load the main stuff
-require("core.options")
-require("core.plugins")
-require("core.which-key")
-require("core.eyecandy")
-require("core.tools")
-require("core.cmp")
-require("core.lsp")
+--
+-- Niluje's neovim config
+-- Shamelessly stolen from https://github.com/nvim-lua/kickstart.nvim
+-- ----------------
 
--- Prog languages
-require("langs.python")
-require("langs.lua")
-require("langs.c")
+-- Core stuff
+bootstrap = require('core.plugins')
+if bootstrap == true then
+  return
+end
+require('core.options')
+require('core.keys')
+require('core.eye-candy')
+require('core.lsp')
+require('core.tools')
+-- Language specifics
+require('langs.c')
+require('langs.lua')
+require('langs.python')
+

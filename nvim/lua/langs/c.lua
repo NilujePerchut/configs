@@ -1,6 +1,6 @@
--- ------------------------
+--
 -- C stuff
--- ------------------------
+-- ----------------
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "c",

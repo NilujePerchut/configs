@@ -1,38 +1,51 @@
--- ------------------------
--- Put general options here
--- ------------------------
-
--- Default settings
+--
+-- General options
 -- ----------------
 
--- Default tabs is C Niluje's style
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = false
-
--- Show cursor line
-vim.opt.cursorline = true
-
--- Show relative line number
-vim.opt.number = true
-vim.opt.relativenumber = true
-
--- Highlight searches
-vim.opt.hlsearch = true
--- Searches are not case sensitive
-vim.opt.incsearch = true
-vim.opt.ic = true
+-- [[ Setting options ]]
+-- See `:help vim.o`
 
 -- Do not use swap file
 vim.opt.swapfile = false
 
--- Disable bell
+-- Disable bells
 vim.opt.errorbells = false
 
--- Uses the system clipboard
-vim.opt.clipboard:append{"unnamedplus"}
+-- Set highlight on search
+vim.o.hlsearch = true
+-- Set incremental search
+vim.o.incsearch = true
+-- Case insensitive searching UNLESS /C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
--- Standard use of Esc in terminal window
-vim.cmd("tnoremap <Esc> <C-\\><C-n>")
+-- Make line numbers default (and relative)
+vim.wo.number = true
+vim.wo.relativenumber = true
+
+-- Set cursor line
+vim.o.cursorline = true
+
+-- Enable mouse mode
+vim.o.mouse = 'a'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.wo.signcolumn = 'yes'
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+-- Uses the system clipboard
+vim.opt.clipboard:prepend {'unnamedplus'}
+
+-- Set folding on indent by default
+vim.o.foldmethod = "indent"
+vim.o.foldenable = false
 

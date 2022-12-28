@@ -1,9 +1,9 @@
---
--- Python stuff
--- ----------------
+-- ------------------------
+-- Cpp stuff
+-- ------------------------
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "python",
+	pattern = "cpp",
 	callback = function()
 		vim.schedule(function()
 			vim.bo.tabstop = 4
@@ -15,6 +15,4 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 	}
 )
-
--- TODO: Add Flake8 stuff here
 

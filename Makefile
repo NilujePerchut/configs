@@ -58,6 +58,7 @@ PHONY += clean_nvim nvim
 clean_nvim:
 	@# remove any existing configuration
 	mkdir -p $(HOME)/.config
+	rm -rf $(HOME)/.config/nvim/plugin
 	rm -rf $(HOME)/.config/nvim
 	rm -rf $(HOME)/.local/share/nvim
 

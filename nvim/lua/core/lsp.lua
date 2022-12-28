@@ -1,64 +1,147 @@
--- ------------------------
--- LSP infra
--- ------------------------
+--
+-- LSP settings
+-- ----------------
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+--  This function gets run when an LSP connects to a particular buffer.
+local on_attach = function(_, bufnr)
+  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- to define small helper and utility functions so you don't have to repeat yourself
+  -- many times.
+  --
+  -- In this case, we create a function that lets us more easily define mappings specific
+  -- for LSP related items. It sets the mode, buffer and description for us each time.
+  local nmap = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
+    end
 
-  -- Mappings.
-	local status_ok, whichkey = pcall(require, "wich-key")
-	if not status_ok then
-		return
-	end
-  whichkey.register({
-    ["l"] = {
-      name = "Lang",
-      ["D"] = { vim.lsp.buf.declaration, "Go to declaration"},
-      ["d"] = { vim.lsp.buf.definition, "Go to definition"},
-      ["h"] = { vim.lsp.buf.hover, "Signature"},
-      ["n"] = { vim.lsp.buf.rename, "Rename"},
-      ["r"] = { vim.lsp.buf.references, "References"},
-    }
-  }, { prefix = "<space>" })
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  nmap('<leader>rn', vim.lsp.buf.rename, 'Rename')
+  nmap('<leader>ca', vim.lsp.buf.code_action, 'Code Action')
+
+  nmap('gd', vim.lsp.buf.definition, 'Goto Definition')
+  nmap('gr', require('telescope.builtin').lsp_references, 'Goto References')
+  nmap('gI', vim.lsp.buf.implementation, 'Goto Implementation')
+  nmap('<leader>lD', vim.lsp.buf.type_definition, 'Type Lsp Definition')
+  nmap('<leader>lds', require('telescope.builtin').lsp_document_symbols, 'Lsp Document Symbols')
+  nmap('<leader>lws', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Lsp Workspace Symbols')
+
+  -- See `:help K` for why this keymap
+  nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+
+  -- Lesser used LSP functionality
+  nmap('gD', vim.lsp.buf.declaration, 'Goto Declaration')
+  nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, 'Lsp Workspace Add Folder')
+  nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, 'Lsp Workspace Remove Folder')
+  nmap('<leader>lwl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, '[L]sp [W]orkspace [L]ist Folders')
+
+  -- Create a command `:Format` local to the LSP buffer
+  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+    vim.lsp.buf.format()
+  end, { desc = 'Format current buffer with LSP' })
 end
 
--- Python LSP config
-local status_ok, lspconfig = pcall(require, "lspconfig")
-if not status_ok then
-	return
-end
-lspconfig["pyright"].setup{
-  on_attach = on_attach,
-}
+-- Enable the following language servers
+--  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+--
+--  Add any additional override configuration in the following tables. They will be passed to
+--  the `settings` field of the server config. You must look up that documentation yourself.
+local servers = {
+  -- gopls = {},
+  -- pyright = {},
+  -- rust_analyzer = {},
+  -- tsserver = {},
 
--- C LSP config
-lspconfig["clangd"].setup{
-  on_attach = on_attach,
-  cmd = {
-    "clangd",
-    "--query-driver=/usr/bin/arm-none-eabi-gcc,/usr/bin/gcc,/usr/bin/g++,usr/bin/clang,/usr/bin/clang++",
-  }
-}
+  clangd = {
+    cmd = {
+      "clangd",
+      "--query-driver=/usr/bin/arm-none-eabi-gcc,/usr/bin/gcc,/usr/bin/g++,usr/bin/clang,/usr/bin/clang++",
+    },
+  },
 
--- Lua LSP config
-lspconfig.sumneko_lua.setup{
-  on_attach = on_attach,
-  settings = {
+  sumneko_lua = {
     Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
       diagnostics = {
-        globals = {"vim"},
-      }
-    }
-  }
+        globals = { 'vim' },
+      },
+    },
+  },
 }
 
--- Use Mason to install LSPs
-local status_ok, mason = pcall(require, "mason")
-if not status_ok then
-	return
-end
-mason.setup()
+--
+-- nvim-cmp supports additional completion capabilities, so broadcast that to servers
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- Setup mason so it can manage external tooling
+require('mason').setup()
+
+-- Ensure the servers above are installed
+local mason_lspconfig = require 'mason-lspconfig'
+
+mason_lspconfig.setup {
+  ensure_installed = vim.tbl_keys(servers),
+}
+
+mason_lspconfig.setup_handlers {
+  function(server_name)
+    require('lspconfig')[server_name].setup {
+      capabilities = capabilities,
+      on_attach = on_attach,
+      settings = servers[server_name],
+    }
+  end,
+}
+
+-- Turn on lsp status information
+require('fidget').setup()
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert {
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+}
 

@@ -43,6 +43,10 @@ source ${HOME}/configs/zsh/aliases.zsh
 # Set the default editor to neovim
 export EDITOR=`which nvim`
 
+# Make Home and End key work
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 [ -f ${HOME}/.zshsp ] && source ${HOME}/.zshsp
 
 source ${HOME}/configs/build/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

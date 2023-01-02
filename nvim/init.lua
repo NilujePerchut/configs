@@ -17,4 +17,6 @@ require('core.tools')
 require('langs.c')
 require('langs.lua')
 require('langs.python')
+require('langs.cpp')
+require('langs.vhdl')
 

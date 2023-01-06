@@ -53,8 +53,6 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
   -- tsserver = {},
 
   clangd = {
@@ -72,6 +70,12 @@ local servers = {
         globals = { 'vim' },
       },
     },
+  },
+
+  pyright = {
+  },
+
+  rust_analyzer = {
   },
 }
 

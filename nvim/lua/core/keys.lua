@@ -43,7 +43,8 @@ whichkey.register({
 		["j"] = {"<cmd>wincmd j<cr>", "Window down"},
 		["k"] = {"<cmd>wincmd k<cr>", "Window up"},
 		["l"] = {"<cmd>wincmd l<cr>", "Window right"},
-		["r"] = {"<cmd>wincmd r<cr>", "Window rotate"}
+		["r"] = {"<cmd>wincmd r<cr>", "Window rotate"},
+		["T"] = {"<cmd>wincmd T<cr>", "Buffer to tab"}
 	},
 	["o"] = {
 		name = "Org mode",

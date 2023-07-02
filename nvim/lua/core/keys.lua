@@ -2,13 +2,6 @@
 -- Keymapping (excluding treesitter ones)
 -- ----------------
 
--- [[ Basic Keymaps ]]
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 -- Uses which key to handle key
 local status_ok, whichkey = pcall(require, "which-key")
 if not status_ok then

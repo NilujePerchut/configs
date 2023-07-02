@@ -4,10 +4,7 @@
 -- ----------------
 
 -- Core stuff
-bootstrap = require('core.plugins')
-if bootstrap == true then
-  return
-end
+require('core.plugins')
 require('core.options')
 require('core.keys')
 require('core.eye-candy')

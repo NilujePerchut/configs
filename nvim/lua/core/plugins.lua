@@ -104,6 +104,9 @@ require('lazy').setup({
   "nvim-orgmode/orgmode",
   "akinsho/org-bullets.nvim",
 
+  -- rainbow delimiters
+  "HiPhish/rainbow-delimiters.nvim",
+
   -- Whitespace Highlight
   "johnfrankmorgan/whitespace.nvim",
 

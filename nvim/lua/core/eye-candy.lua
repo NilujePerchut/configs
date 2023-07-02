@@ -99,7 +99,7 @@ require('nvim-treesitter.configs').setup {
         ['<leader>A'] = '@parameter.inner',
       },
     },
-  },
+  }
 }
 
 -- Special char highlight

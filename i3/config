@@ -49,6 +49,9 @@ set $schlib "schlib"
 set $pcblib "pcblib"
 
 
+# Setting up screens
+exec "~/configs/bin/cfg_screens.sh"
+
 # start a terminal
 bindsym $mod+Return exec ~/configs/bin/console_launcher
 

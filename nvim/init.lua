@@ -16,4 +16,4 @@ require('langs.lua')
 require('langs.python')
 require('langs.cpp')
 require('langs.vhdl')
-
+require('langs.sh')

@@ -80,6 +80,9 @@ local servers = {
 
   bashls = {
   },
+
+  marksman = {
+  },
 }
 
 --

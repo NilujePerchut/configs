@@ -27,8 +27,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Package manager
-  'wbthomason/packer.nvim',
-
   'folke/which-key.nvim',
 
   { -- LSP Configuration & Plugins

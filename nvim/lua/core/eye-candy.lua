@@ -43,7 +43,7 @@ require('indent_blankline').setup {
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript'},
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'vimdoc', 'vim', 'bash', 'diff', 'hjson', 'latex', 'make', 'markdown', 'verilog'},
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },

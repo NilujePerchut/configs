@@ -37,17 +37,11 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      'j-hui/fidget.nvim',
+      {'j-hui/fidget.nvim', tag = 'legacy', opts={} },
 
       -- Additional lua configuration, makes nvim stuff amazing
       'folke/neodev.nvim',
     },
-  },
-
-  -- Switch to fidget legacy tag as recommended
-  {
-      'j-hui/fidget.nvim',
-      tag = "legacy",
   },
 
   { -- Autocompletion
@@ -57,14 +51,13 @@ require('lazy').setup({
 
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
+    build = ':TSUpdate',
     run = function()
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
-  },
-
-  { -- Additional text objects via treesitter
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    after = 'nvim-treesitter',
   },
 
   -- Nerd tree
@@ -85,7 +78,11 @@ require('lazy').setup({
   },
   'lewis6991/gitsigns.nvim',
 
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
+  -- Theme inspired by Atom
+  {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+  },
 
   {
     'nvim-lualine/lualine.nvim', -- Fancier statusline

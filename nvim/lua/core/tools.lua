@@ -65,6 +65,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 require('neodev').setup()
 
 -- Neovim orgmode
+-- Beware orgmode needs some treesitter config
 local status_ok, org = pcall(require, "orgmode")
 if not status_ok then
   return
@@ -78,4 +79,3 @@ if not status_ok then
   return
 end
 org_bullets.setup()
-

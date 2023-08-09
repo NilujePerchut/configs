@@ -110,7 +110,9 @@ require('lazy').setup({
 
   -- Orgmode
   "nvim-orgmode/orgmode",
-  "akinsho/org-bullets.nvim",
+  { "akinsho/org-bullets.nvim",
+    dependencies = { "nvim-orgmode/orgmode" }
+  },
 
   -- rainbow delimiters
   "HiPhish/rainbow-delimiters.nvim",

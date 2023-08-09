@@ -74,7 +74,11 @@ require('lazy').setup({
   -- Git related plugins
   {
     "NeogitOrg/neogit",
-    dependencies = { "nvim-lua/plenary.nvim", }
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "sindrets/diffview.nvim",
+    }
   },
   'lewis6991/gitsigns.nvim',
 

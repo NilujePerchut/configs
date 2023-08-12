@@ -10,6 +10,7 @@ require('core.keys')
 require('core.eye-candy')
 require('core.lsp')
 require('core.tools')
+require('core.debug')
 -- Language specifics
 require('langs.c')
 require('langs.lua')

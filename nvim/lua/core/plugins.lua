@@ -124,6 +124,15 @@ require('lazy').setup({
   -- Whitespace Highlight
   "johnfrankmorgan/whitespace.nvim",
 
+  -- Debuger related
+  "mfussenegger/nvim-dap",
+  { "mfussenegger/nvim-dap-python",
+    dependenies = { "mfussenegger/nvim-dap" }
+  },
+  { "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap" }
+  },
+  "jay-babu/mason-nvim-dap.nvim",
   ------ Add custom plugins to lazy from ~/.config/nvim/lua/custom/plugins.lua
   --{import = 'custom.plugins'},
 },{})

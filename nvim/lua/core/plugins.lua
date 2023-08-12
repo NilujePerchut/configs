@@ -143,6 +143,7 @@ require('lazy').setup({
     }
   },
   "nvim-neotest/neotest-python",
+  "rouge8/neotest-rust",
 
   ------ Add custom plugins to lazy from ~/.config/nvim/lua/custom/plugins.lua
   --{import = 'custom.plugins'},

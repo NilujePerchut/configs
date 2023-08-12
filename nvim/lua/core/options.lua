@@ -48,4 +48,3 @@ vim.opt.clipboard:prepend {'unnamedplus'}
 -- Set folding on indent by default
 vim.o.foldmethod = "indent"
 vim.o.foldenable = false
-

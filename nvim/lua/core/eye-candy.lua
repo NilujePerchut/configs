@@ -113,4 +113,3 @@ vim.o.listchars = "tab:< ⭾,trail:⨯,eol:↲,nbsp:¤"
 
 -- Set whitespace highlight
 require('whitespace-nvim').setup()
-

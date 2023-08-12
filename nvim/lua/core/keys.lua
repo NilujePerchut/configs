@@ -89,4 +89,3 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 
 -- Standard use of Esc in terminal window
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")
-

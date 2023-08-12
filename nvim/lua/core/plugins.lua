@@ -133,6 +133,17 @@ require('lazy').setup({
     dependencies = { "mfussenegger/nvim-dap" }
   },
   "jay-babu/mason-nvim-dap.nvim",
+
+  -- Test harness
+  { "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim"
+    }
+  },
+  "nvim-neotest/neotest-python",
+
   ------ Add custom plugins to lazy from ~/.config/nvim/lua/custom/plugins.lua
   --{import = 'custom.plugins'},
 },{})

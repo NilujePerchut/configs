@@ -131,7 +131,7 @@ require('lazy').setup({
   -- Debuger related
   "mfussenegger/nvim-dap",
   { "mfussenegger/nvim-dap-python",
-    dependenies = { "mfussenegger/nvim-dap" }
+    dependencies = { "mfussenegger/nvim-dap" }
   },
   { "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap" }

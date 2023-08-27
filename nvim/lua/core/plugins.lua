@@ -66,7 +66,7 @@ require('lazy').setup({
     branch = "v2.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "kyazdani42/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     }
   },
@@ -90,7 +90,7 @@ require('lazy').setup({
 
   {
     'nvim-lualine/lualine.nvim', -- Fancier statusline
-    dependencies = {'kyazdani42/nvim-web-devicons'},
+    dependencies = {'nvim-tree/nvim-web-devicons'},
   },
   'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
@@ -127,6 +127,15 @@ require('lazy').setup({
 
   -- Whitespace Highlight
   "johnfrankmorgan/whitespace.nvim",
+
+  -- Alpha starter screen
+  {
+    "goolord/alpha-nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function ()
+        require"alpha".setup(require"alpha.themes.startify".config)
+    end
+  },
 
   -- Debuger related
   "mfussenegger/nvim-dap",

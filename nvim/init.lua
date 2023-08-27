@@ -12,6 +12,7 @@ require('core.lsp')
 require('core.tools')
 require('core.debug')
 require('core.test')
+require('core.remote')
 -- Language specifics
 require('langs.c')
 require('langs.lua')

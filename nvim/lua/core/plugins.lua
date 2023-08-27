@@ -1,5 +1,5 @@
 --
--- Plugins management (using packer)
+-- Plugins management
 -- ----------------
 
 -- [[ Basic Keymaps ]]
@@ -102,7 +102,11 @@ require('lazy').setup({
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   {
-  'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1
+  'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
   },
 
   -- Markdown
@@ -145,6 +149,15 @@ require('lazy').setup({
   "nvim-neotest/neotest-python",
   "rouge8/neotest-rust",
 
-  ------ Add custom plugins to lazy from ~/.config/nvim/lua/custom/plugins.lua
-  --{import = 'custom.plugins'},
+  -- Remote
+  {
+    "amitds1997/remote-nvim.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+      "nvim-telescope/telescope.nvim",
+    }
+  }
+
 },{})

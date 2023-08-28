@@ -40,8 +40,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 source ${HOME}/configs/zsh/aliases.zsh
 
-# Set the default editor to neovim
-export EDITOR=`which nvim`
+# Set the default editor to vim/neovim
+export EDITOR=vim
 
 # Make Home and End key work
 bindkey "^[[H" beginning-of-line

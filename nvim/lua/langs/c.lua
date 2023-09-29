@@ -6,10 +6,11 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "c",
 	callback = function()
 		vim.schedule(function()
+      -- Nx style by default
 			vim.bo.tabstop = 4
 			vim.bo.softtabstop = 4
 			vim.bo.shiftwidth = 4
-			vim.bo.expandtab = false
+			vim.bo.expandtab = true
       vim.wo.colorcolumn = "80"
       -- Specifics key maps
       local wk = require("which-key")

@@ -26,7 +26,8 @@ whichkey.register({
 	},
 	["g"] = {
 		name = "Vcs/git",
-		["g"] = { "<cmd>Neogit<cr>", "Neogit status"}
+		["g"] = { "<cmd>Neogit<cr>", "Neogit status"},
+		["f"] = { "<cmd>Flog<cr>", "Flog branch"}
 	},
 	["w"] = {
 		name = "Window",

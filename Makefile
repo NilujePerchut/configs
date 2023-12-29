@@ -140,5 +140,35 @@ clean_vscode:
 archive_vscode:
 	code --list-extensions > $(CONFIG_DIR)/vscode/extensions
 
+
+######################
+# Hyprland + stuff
+######################
+
+PHONY += clean_hyprland hyprland
+
+# hyprland + waybar + waypaper + rofi
+clean_hyprland:
+	@# remove any existing configuration
+	mkdir -p $(HOME)/.config
+	rm -rf $(HOME)/.config/hypr
+	rm -rf $(HOME)/.config/waybar
+	rm -rf $(HOME)/.config/waypaper
+	rm -rf $(HOME)/.config/rofi
+	rm -rf $(HOME)/.local/share/rofi/themes/rounded*
+
+hyprland: clean_hyprland
+	@# create the new links
+	mkdir -p $(HOME)/.config/hyperland/hypr
+	mkdir -p $(HOME)/.config/hyperland/waybar
+	mkdir -p $(HOME)/.config/hyperland/waypaper
+	mkdir -p $(HOME)/.local/share/rofi/themes
+	mkdir -p $(HOME)/.config/rofi
+	ln -s $(CONFIG_DIR)/hyprland/hypr $(HOME)/.config/hypr
+	ln -s $(CONFIG_DIR)/hyprland/waybar $(HOME)/.config/waybar
+	ln -s $(CONFIG_DIR)/hyprland/waypaper $(HOME)/.config/waypaper
+	ln -s $(CONFIG_DIR)/hyprland/rofi/config.rasi $(HOME)/.config/rofi/
+	ln -s $(CONFIG_DIR)/hyprland/rofi/themes/* $(HOME)/.local/share/rofi/themes/
+
 $(BUILD_DIR):
 	mkdir -p $@

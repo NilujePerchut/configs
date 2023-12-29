@@ -48,21 +48,34 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  programs = {
+    hyprland = {
+      enable = true;
+      xwayland = {
+        enable = true;
+      };
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
+  };
 
   # Configure keymap in X11
   services.xserver = {
+    enable = true;
     layout = "fr";
     xkbVariant = "";
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
   };
 
   # Configure console keymap
   console.keyMap = "fr";
+
+  security.pam.services.swaylock = {};
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -76,12 +89,20 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
+    jack.enable = true;
+  };
 
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
+  };
+
+  programs.dconf = {
+    enable = true;
+  };
+
+  services.gnome = {
+    gnome-keyring.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -107,11 +128,65 @@
     neovim
     wget
     git
+
+    # Wayland
+    wayland
+    waydroid
+    arandr
+
+    # Hyprland
+    hyprland
+    waybar
+    dunst
+    libnotify
+    kitty
+    rofi-wayland
+    wev
+    cinnamon.nemo-with-extensions
+    pavucontrol
+    bluez
+    swaylock-effects
+    arandr
+    waybar
+    networkmanagerapplet
+    brightnessctl
+    gsimplecal
+    grim
+    slurp
+    hyprpicker
+    jq
+    waypaper
+    swww
+
+    # Work
+    kicad
+    htop
+    tig
+
+    # games
+    steam
   ];
+
+  #programs.sway.enable = true;
+  programs.steam.enable = true;
+
+  #nixpkgs.overlays = [
+  #  (self: super: {
+  #    waybar = super.waybar.overrideAttrs (oldAttrs: {
+  #      src = super.fetchFromGitHub {
+  #        owner = "Alexays";
+  #        repo = "waybar";
+  #        rev = "3e55d0d7f29bc91bf6ad908bf72c1f0fcb93ed1e";
+  #        sha256 = "sha256-uHS5iY8wibwYFY5t50KPNALA+7yXhoImyFC6Ndm8WP8=";
+  #      };
+  #      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  #    });
+  #  })
+  #];
 
   fonts.packages = with pkgs; [
     #noto-fonts
-    (nerdfonts.override { fonts = [ "Noto" ]; })
+    (nerdfonts.override { fonts = [ "Noto" "Iosevka"]; })
   ];
 
   # Make neovim the default editor

@@ -35,7 +35,7 @@ export PATH=$PATH:${HOME}/configs/bin
 eval "$(starship init zsh)"
 
 # Load zsh-autosuggestions
-source ${HOME}/configs/build/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ ! -e /etc/nixos ] && source ${HOME}/configs/build/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 source ${HOME}/configs/zsh/aliases.zsh
@@ -49,4 +49,4 @@ bindkey "^[[F" end-of-line
 
 [ -f ${HOME}/.zshsp ] && source ${HOME}/.zshsp
 
-source ${HOME}/configs/build/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ ! -e /etc/nixos ] && source ${HOME}/configs/build/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

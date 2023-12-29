@@ -140,5 +140,29 @@ clean_vscode:
 archive_vscode:
 	code --list-extensions > $(CONFIG_DIR)/vscode/extensions
 
+
+######################
+# Hyprland + stuff
+######################
+
+PHONY += clean_hyprland hyprland
+
+# hyprland + waybar + waypaper
+clean_hyprland:
+	@# remove any existing configuration
+	mkdir -p $(HOME)/.config
+	rm -rf $(HOME)/.config/hypr
+	rm -rf $(HOME)/.config/waybar
+	rm -rf $(HOME)/.config/waypaper
+
+hyprland: clean_hyprland
+	@# create the new links
+	mkdir -p $(HOME)/.config/hyperland/hypr
+	mkdir -p $(HOME)/.config/hyperland/waybar
+	mkdir -p $(HOME)/.config/hyperland/waypaper
+	ln -s $(CONFIG_DIR)/hyprland/hypr $(HOME)/.config/hypr
+	ln -s $(CONFIG_DIR)/hyprland/waybar $(HOME)/.config/waybar
+	ln -s $(CONFIG_DIR)/hyprland/waypaper $(HOME)/.config/waypaper
+
 $(BUILD_DIR):
 	mkdir -p $@

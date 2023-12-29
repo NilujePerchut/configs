@@ -15,6 +15,11 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
+  # Use ZSH
+  environment.shells = with pkgs; [ bash zsh ];
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+
   networking.hostName = "osdegirouette"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -89,7 +94,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
+      zsh
     ];
   };
 
@@ -103,6 +108,17 @@
     wget
     git
   ];
+
+  fonts.packages = with pkgs; [
+    #noto-fonts
+    (nerdfonts.override { fonts = [ "Noto" ]; })
+  ];
+
+  # Make neovim the default editor
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
+  programs.neovim.viAlias = true;
+  programs.neovim.vimAlias = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

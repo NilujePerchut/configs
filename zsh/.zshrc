@@ -35,7 +35,7 @@ export PATH=$PATH:${HOME}/configs/bin
 eval "$(starship init zsh)"
 
 # Load zsh-autosuggestions
-source ${HOME}/configs/build/zsh-autosuggestions/zsh-autosuggestions.zsh
+[ ! -e /etc/nixos ] && source ${HOME}/configs/build/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 source ${HOME}/configs/zsh/aliases.zsh
@@ -43,10 +43,14 @@ source ${HOME}/configs/zsh/aliases.zsh
 # Set the default editor to vim/neovim
 export EDITOR=vim
 
+# Enable Ctrl-R
+bindkey -v
+bindkey "^R" history-incremental-search-backward
+
 # Make Home and End key work
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
 
 [ -f ${HOME}/.zshsp ] && source ${HOME}/.zshsp
 
-source ${HOME}/configs/build/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ ! -e /etc/nixos ] && source ${HOME}/configs/build/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

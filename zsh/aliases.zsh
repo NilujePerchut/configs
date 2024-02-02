@@ -15,9 +15,10 @@ function git_main_branch() {
 
 # Git aliases
 alias gst='git status'
-alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "--wip-- [skip ci]"'
-alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify --no-gpg-sign -m "WIP-- [skip ci]"'
+alias gunwip='git log -n 1 | grep -q -c "WIP\-\-" && git reset HEAD~1'
 alias glo="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
 alias gcm='git checkout $(git_main_branch)'
+alias gcor='git checkout --recurse-submodules'
+alias gsbu='git submodule update --init --recurse'
 alias tig='tig --all'
-

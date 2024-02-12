@@ -19,13 +19,28 @@
   home.packages = with pkgs; [
     starship
     lxqt.qterminal
-    kitty
 
     # nvim needs
     gcc
     nodejs
     unzip
     ripgrep
+    yarn
+    fd
+
+    # misc
+    tig
+    silver-searcher
+    zellij
+    emacs
+    killall
+
+    # prog
+    rustup
+    python3Full
+    gcc
+    gnumake
+    cmake
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

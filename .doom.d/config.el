@@ -53,11 +53,6 @@ lines-tail newline newline-mark)
       :desc "Open treemacs pane"
       :n "f t" #'+treemacs/toggle)
 
-(when (> (display-color-cells) 16)         ;if not in CLI
-  (setq x-select-enable-clipboard t
-        interprogram-paste-function
-        'x-cut-buffer-or-selection-value))
-
 (delete-selection-mode 1)
 
 (custom-set-variables
@@ -81,7 +76,6 @@ lines-tail newline newline-mark)
 (defun niluje/setup-vhdl ()
   "Sets VHDL stuff"
     (interactive)
-    (vhdl-tools-mode 1)
     (setq vhdl-basic-offset 2)
     (setq vhdl-indent-tabs-mode t)
     (setq tab-width 2))

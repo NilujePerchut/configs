@@ -13,7 +13,7 @@ whichkey.register({
 	["<space>"] = { "<cmd>Telescope find_files<cr>", "Find files"},
 	["!"] = { "<cmd>:rightbelow split | terminal<cr>", "Spawn terminal" },
 	["b"] = {
-		name = "Buffer",
+		name = "[B]uffer",
 		["b"] = { "<cmd>Telescope buffers<cr>", "Buffer list"},
 		["c"] = { "<cmd>%y *<cr>", "Copy whole buffer"},
 		["d"] = { "<cmd>bd<cr>", "Destroy buffer"},
@@ -21,16 +21,16 @@ whichkey.register({
 		["V"] = { "<cmd>vnew<cr>", "New vertical empty buffer"}
 	},
 	["f"] = {
-		name = "File",
+		name = "[F]ile",
 		["t"] = { "<cmd>Neotree toggle<cr>", "Toogle Neotree"}
 	},
 	["g"] = {
-		name = "Vcs/git",
+		name = "Vcs/[G]it",
 		["g"] = { "<cmd>Neogit<cr>", "Neogit status"},
 		["f"] = { "<cmd>Flog<cr>", "Flog branch"}
 	},
 	["w"] = {
-		name = "Window",
+		name = "[W]indow",
 		["/"] = {"<cmd>vsplit<cr>", "Split vert."},
 		["-"] = {"<cmd>split<cr>", "Split hori."},
 		["h"] = {"<cmd>wincmd h<cr>", "Window left"},
@@ -41,13 +41,13 @@ whichkey.register({
 		["T"] = {"<cmd>wincmd T<cr>", "Buffer to tab"}
 	},
 	["o"] = {
-		name = "Org mode",
+		name = "[O]rg mode",
   },
 	["s"] = {
-		name = "Search",
+		name = "[S]earch",
   },
 	["t"] = {
-		name = "Toggle",
+		name = "[T]oggle",
 		["g"] = { "<cmd>Gitsigns toggle_signs<cr>", "Toggle git signs"},
 		["n"] = { "<cmd>set invnumber<cr>", "Toggle line num"},
 		["r"] = { "<cmd>set invrelativenumber<cr>", "Toggle relative line Num"},
@@ -56,17 +56,17 @@ whichkey.register({
     ["i"] = { "<cmd>set list!<cr>", "Toggle invisible chars"}
 	},
 	["u"] = {
-		name = "Utils",
+		name = "[U]tils",
 		["m"] = { "<cmd>Mason<cr>", "Mason"},
 	},
 	["x"] = {
-		name = "Text",
+		name = "Te[x]t",
 		["U"] = { "gUiw", "To uppercase"},
 		["u"] = { "guiw", "To lowercase"},
     ["x"] = { "<cmd>%!xxd<cr>", "Text to Hex"},
     ["X"] = { "<cmd>%!xxd -r<cr>", "Hex To Text"},
     ["f"] = {
-      name = "Folding",
+      name = "[F]olding",
       ["i"] = { "<cmd>set foldmethod=indent<cr>", "Indent folding"},
       ["m"] = { "<cmd>set foldmethod=marker<cr>", "Marker folding"},
       ["t"] = { "zA", "Toggle section"},

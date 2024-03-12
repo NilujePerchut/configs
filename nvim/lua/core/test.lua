@@ -15,12 +15,12 @@ function AddTestKeymaps()
   local wk = require("which-key")
   wk.register({
     ["l"] = {
-      name = "Lang",
+      name = "[L]ang",
         ["T"] = {
-          name = "Test",
-          ["r"] = {function() nt.run.run() end, "Run nearest"},
-          ["f"] = {function() nt.run.run(vim.fn.expand("%")) end, "Run whole file"},
-          ["d"] = {function() nt.run.run({strategy = "dap"}) end, "Run nearest with dap"},
+          name = "[T]est",
+          ["r"] = {function() nt.run.run() end, "Run nea[r]est"},
+          ["f"] = {function() nt.run.run(vim.fn.expand("%")) end, "Run whole [f]ile"},
+          ["d"] = {function() nt.run.run({strategy = "dap"}) end, "Run nearest with [d]ap"},
       },
     },
   }, { prefix = "<space>" })

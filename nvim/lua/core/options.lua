@@ -18,16 +18,21 @@ vim.o.incsearch = true
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
 
 -- Make line numbers default (and relative)
 vim.wo.number = true
 vim.wo.relativenumber = true
 
+-- Don't show the mode, since it's already in status line
+vim.opt.showmode = false
+
 -- Set cursor line
 vim.o.cursorline = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
 
 -- Enable break indent
 vim.o.breakindent = true
@@ -37,13 +42,14 @@ vim.o.undofile = true
 
 -- Decrease update time
 vim.o.updatetime = 250
-vim.wo.signcolumn = 'yes'
+vim.opt.timeoutlen = 300
+vim.wo.signcolumn = "yes"
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = "menuone,noselect"
 
 -- Uses the system clipboard
-vim.opt.clipboard:prepend {'unnamedplus'}
+vim.opt.clipboard:prepend({ "unnamedplus" })
 
 -- Set folding on indent by default
 vim.o.foldmethod = "indent"

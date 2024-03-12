@@ -16,27 +16,27 @@ vim.api.nvim_create_autocmd("FileType", {
       local wk = require("which-key")
       wk.register({
       ["l"] = {
-        name = "Lang",
+        name = "[L]ang",
         ["t"] = {
-          name = "Tabs",
+          name = "[T]abs",
           ["k"] = { function()
                       vim.bo.tabstop = 8
                       vim.bo.softtabstop = 8
                       vim.bo.shiftwidth = 8
                       vim.bo.expandtab = false
-                    end, "Kernel"},
+                    end, "[K]ernel"},
           ["d" ]= { function()
                       vim.bo.tabstop = 4
                       vim.bo.softtabstop = 4
                       vim.bo.shiftwidth = 4
                       vim.bo.expandtab = false
-                    end, "Default"},
+                    end, "[D]efault"},
           ["n" ]= { function()
                       vim.bo.tabstop = 4
                       vim.bo.softtabstop = 4
                       vim.bo.shiftwidth = 4
                       vim.bo.expandtab = true
-                    end, "Nx"}
+                    end, "[N]x"}
         },
       },
     }, { prefix = "<space>" })

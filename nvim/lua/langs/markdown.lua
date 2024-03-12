@@ -10,8 +10,8 @@ vim.api.nvim_create_autocmd("FileType", {
       local wk = require("which-key")
       wk.register({
       ["l"] = {
-        name = "Lang",
-        ["p"] = {"<cmd>MarkdownPreview<cr>", "Preview"},
+        name = "[L]ang",
+        ["p"] = {"<cmd>MarkdownPreview<cr>", "[P]review"},
       },
     }, { prefix = "<space>" })
 		end)

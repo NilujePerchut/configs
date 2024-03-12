@@ -2,8 +2,6 @@
 -- Debugging related stuff
 -- ----------------
 
-require("dapui").setup()
-
 -- Open dapui interface automatically
 local dap, dapui = require("dap"), require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -16,10 +14,10 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
--- Mason should be setup first
-require("mason-nvim-dap").setup({
-    ensure_installed = { "python", "rust" }
-})
+---- Mason should be setup first
+--require("mason-nvim-dap").setup({
+--    ensure_installed = { "python", "rust" }
+--})
 
 function AddDebugKeymaps()
   -- Add debug related keymaps
@@ -27,14 +25,14 @@ function AddDebugKeymaps()
   local wk = require("which-key")
   wk.register({
     ["l"] = {
-      name = "Lang",
+      name = "[L]ang",
       ["d"] = {
-        name = "Debugging",
-        ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint"},
-        ["c"] = { "<cmd>DapContinue<cr>", "Continue"},
-        ["o"] = { "<cmd>DapStepOver<cr>", "StepOver"},
-        ["i"] = { "<cmd>DapStepInto<cr>", "StepInto"},
-        ["e"] = { "<cmd>DapStepOut<cr>", "StepOut"},
+        name = "[D]ebugging",
+        ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle [b]reakpoint"},
+        ["c"] = { "<cmd>DapContinue<cr>", "[C]ontinue"},
+        ["o"] = { "<cmd>DapStepOver<cr>", "Step[O]ver"},
+        ["i"] = { "<cmd>DapStepInto<cr>", "Step[I]nto"},
+        ["e"] = { "<cmd>DapStepOut<cr>", "St[e]pOut"},
       },
     },
   }, { prefix = "<space>" })

@@ -23,5 +23,21 @@
         modules = [ ./home.nix ];
       };
     };
+    packages = {
+      default = self.packages.${system}.install;
+
+      ${system}.install = pkgs.writeShellApplication {
+        name = "install";
+        runtimeInputs = with pkgs; [ git ];
+        text = ''${./install_nix.sh} "$@"'';
+      };
+    };
+    apps = {
+      default = self.apps.${system}.install;
+      install = {
+          type = "app";
+          program = "${self.packages.${system}.install}/bin/install";
+      };
+    };
   };
 }

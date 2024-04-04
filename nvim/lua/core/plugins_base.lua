@@ -420,7 +420,6 @@ require("lazy").setup({
 					"bash",
 					"diff",
 					"hjson",
-					"latex",
 					"make",
 					"markdown",
 					"verilog",

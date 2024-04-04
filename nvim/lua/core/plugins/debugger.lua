@@ -1,13 +1,12 @@
 -- Debugger related stuff
 return {
-	"mfussenegger/nvim-dap",
 	{
-		"mfussenegger/nvim-dap-python",
-		dependencies = { "mfussenegger/nvim-dap" }
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap" }
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"mfussenegger/nvim-dap-python",
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio"
+		},
 	},
 	{"jay-babu/mason-nvim-dap.nvim",
 	 opts = {

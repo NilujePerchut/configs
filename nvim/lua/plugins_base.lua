@@ -37,6 +37,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- imports all module in core/plugins
-	{ import = "core.plugins" },
+	-- imports all module in plugins directory
+	{ import = "plugins" },
 })

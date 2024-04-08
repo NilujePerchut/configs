@@ -11,18 +11,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Core stuff
-require("core.options")
-require("core.plugins_base")
-require("core.keys")
-require("core.eye-candy")
-require("core.debug")
-require("core.test")
----- Language specifics
-require("langs.c")
-require("langs.lua")
-require("langs.python")
-require("langs.cpp")
-require("langs.vhdl")
-require("langs.sh")
-require("langs.markdown")
-require("langs.rust")
+require("options")
+require("plugins_base")
+require("keys")
+require("eye-candy")
+require("debug")
+require("test")

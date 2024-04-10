@@ -19,7 +19,7 @@ vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = "split"
+vim.opt.inccommand = "nosplit"
 
 -- Make line numbers default (and relative)
 vim.wo.number = true

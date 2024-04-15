@@ -3,7 +3,8 @@
 -- ----------------
 
 -- Open dapui interface automatically
-local dap, dapui = require("dap"), require("dapui")
+local dap = require("dap")
+local dapui = require("dapui")
 dap.listeners.after.event_initialized["dapui_config"] = function()
   dapui.open()
 end
@@ -14,7 +15,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
----- Mason should be setup first
+-- Mason should be setup first
 --require("mason-nvim-dap").setup({
 --    ensure_installed = { "python", "rust" }
 --})

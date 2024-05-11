@@ -61,6 +61,13 @@
     };
   };
 
+  # Enable opengl
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
   # Configure keymap in X11
   services.xserver = {
     enable = true;
@@ -119,6 +126,21 @@
     ];
   };
 
+  # Laptop power management stuff
+  powerManagement.enable = true;
+  services.thermald.enable = true;
+  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq.settings = {
+    battery = {
+      governor = "powersave";
+      turbo = "never";
+    };
+    charger = {
+      governor = "performance";
+      turbo = "auto";
+    };
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -165,10 +187,19 @@
 
     # games
     steam
+    protonup
+    heroic
+    bottles
   ];
 
   #programs.sway.enable = true;
   programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
+
+  environment.sessionVariables = {
+    STEAM_EXTRA_COMPAT_TOOLS_PARTS = "/home/user/niluje/.steam/root/compatibilitytoolss";
+  };
 
   #nixpkgs.overlays = [
   #  (self: super: {
@@ -206,7 +237,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

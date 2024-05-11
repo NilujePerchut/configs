@@ -2,10 +2,11 @@
   description = "my_flake";
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, nixos-hardware, ... }:
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
@@ -14,7 +15,7 @@
     nixosConfigurations = {
       osdegirouette = lib.nixosSystem {
         system = system;
-        modules = [ ./configuration.nix ];
+        modules = [ ./configuration.nix nixos-hardware.nixosModules.lenovo-thinkpad-x230 ];
       };
     };
     homeConfigurations = {

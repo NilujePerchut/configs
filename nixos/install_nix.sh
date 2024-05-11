@@ -29,6 +29,10 @@ nix-shell -p git --command "git clone --branch nixos https://github.com/NilujePe
 echo About to create harware-config.nix
 sudo nixos-generate-config --show-hardware-config > ~/configs/nixos/hardware-configuration.nix
 
+# Inctall nix-hardware channel
+sudo nix-channel --add https://github.com/NixOS/nixos-hardware/archive/master.tar.gz nixos-hardware
+sudo nix-channel --update
+
 # Rebuild system
 echo About to rebuild system
 sudo nixos-rebuild switch --flake ~/configs/nixos#osdegirouette;

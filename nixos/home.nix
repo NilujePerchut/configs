@@ -42,6 +42,11 @@
     gcc
     gnumake
     cmake
+
+    # 3D printing
+    bambu-studio
+    openscad
+    freecad
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

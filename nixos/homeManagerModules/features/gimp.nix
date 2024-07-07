@@ -1,0 +1,8 @@
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  ...
+}: {
+}

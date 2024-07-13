@@ -54,6 +54,23 @@
     gnome-keyring.enable = true;
   };
 
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  services.dbus = {
+    enable = true;
+    packages = [ pkgs.dconf ];
+  };
+
+  programs.dconf = {
+    enable = true;
+  };
+
+  fonts.packages = with pkgs; [
+    #noto-fonts
+    (nerdfonts.override { fonts = [ "Noto" "Iosevka"]; })
+  ];
+
   environment.systemPackages = with pkgs; [
     # Wayland
     wayland

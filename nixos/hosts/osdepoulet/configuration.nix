@@ -9,28 +9,28 @@
   ...
 }: {
   imports = [ ./hardware-configuration.nix
-              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x230 ];
+              inputs.nixos-hardware.nixosModules.framework-13-7040-amd ];
 
   # Bootloader.
-  boot = {
-    loader.grub.enable = true;
-    loader.grub.device = "/dev/sda";
-    loader.grub.useOSProber = true;
-  };
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   myNixOS = {
     bundles.desktop.enable = true;
     bundles.default.enable = true;
     bundles.games.enable = true;
     bundles.users.enable = true;
-    bundles.power.enable = true;
+    bundles.bluetooth.enable = true;
   };
 
   networking = {
-    hostName = "osdegirouette";
+    hostName = "osdepoulet";
     networkmanager.enable = true;
     firewall.enable = false;
   };
+
+  # BIOS update
+  services.fwupd.enable = true;
 
   system.stateVersion = "24.05"; # Did you read the comment?
 }

@@ -38,5 +38,4 @@
     font.name = "NotoMono Nerd Font";
     extraConfig = "enable_audio_bell false\n";
   };
-
 }

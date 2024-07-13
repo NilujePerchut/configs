@@ -11,7 +11,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "temperature", "memory", "backlight", "battery", "pulseaudio", "tray"],
+    "modules-right": ["cpu", "temperature", "memory", "backlight", "battery", "power-profiles-daemon", "pulseaudio", "tray"],
 
     // Modules configuration
     "hyprland/workspaces": {
@@ -77,9 +77,6 @@
 	"on-click": "gsimplecal",
     },
    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        // "format-critical": "{temperatureC}°C {icon}",
         "critical-threshold": 80,
         "interval": 2,
         "format": "{temperatureC}°C ",
@@ -149,10 +146,15 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/power": {
-      "format": "{icon}",
-      "format-icons": "",// 󰣇
-      "exec-on-event": "true",
-      "on-click": "~/scripts/sessionMenu.sh",
-    }
+"power-profiles-daemon": {
+  "format": "{icon} ",
+  "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+  "tooltip": true,
+  "format-icons": {
+    "default": "",
+    "performance": "",
+    "balanced": "",
+    "power-saver": ""
+  }
+}
 }

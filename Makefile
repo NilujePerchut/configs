@@ -89,6 +89,8 @@ clean_zsh:
 	@# Remove zsh plugins
 	rm -rf $(BUILD_DIR)/zsh-syntax-highlighting
 	rm -rf $(BUILD_DIR)/zsh-autosuggestions
+	@# Remove Kitty stuff
+	rm -rf $(HOME)/.config/kitty
 
 # Assumes, zsh is installed
 zsh: clean_zsh | $(BUILD_DIR)
@@ -101,6 +103,8 @@ zsh: clean_zsh | $(BUILD_DIR)
 	rm -f $(HOME)/.zshrc
 	ln -s $(CONFIG_DIR)/zsh/.zshrc $(HOME)/.zshrc
 	ln -s $(CONFIG_DIR)/zsh/starship.toml $(HOME)/.config/starship.toml
+	mkdir -p $(HOME)/.config/kitty
+	ln -s $(CONFIG_DIR)/kitty.conf $(HOME)/.config/kitty/kitty.conf
 	zsh -l
 
 ######################

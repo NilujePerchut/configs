@@ -34,8 +34,6 @@
   # Kitty stuff
   programs.kitty = {
     enable = true;
-    font.size = 12;
-    font.name = "NotoMono Nerd Font";
-    extraConfig = "enable_audio_bell false\n";
+    extraConfig = builtins.readFile ../../../kitty.conf;
   };
 }

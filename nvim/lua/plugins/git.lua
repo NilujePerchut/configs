@@ -7,10 +7,10 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"sindrets/diffview.nvim",
 		},
-    cmd = { "Neogit" },
-		opts = {},
+		tag = "v0.0.1",
+		config = true,
+		cmd = { "Neogit" },
 	},
-
 	-- Adds git related signs to the gutter, as well as utilities for managing changes
 	{
 		"lewis6991/gitsigns.nvim",

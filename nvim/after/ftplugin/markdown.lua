@@ -4,9 +4,7 @@
 
 -- Specifics key maps
 local wk = require("which-key")
-wk.register({
-  ["l"] = {
-    name = "[L]ang",
-    ["p"] = {"<cmd>MarkdownPreview<cr>", "[P]review"},
-  },
+wk.add({
+  { "<space>l", group = "[L]ang" },
+  { "<space>lp", "<cmd>MarkdownPreview<cr>", desc = "[P]review" },
 }, { prefix = "<space>" })

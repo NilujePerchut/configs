@@ -15,28 +15,26 @@ vim.opt.rtp:prepend(lazypath)
 -- These are only the core plugins
 -- non core plugins will be loaded afterward
 require("lazy").setup({
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-  {
-    "ibhagwan/smartyank.nvim",
-    opts = {},
+  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+  { "ibhagwan/smartyank.nvim", opts = {} },
+
+  -- "gc" to comment visual regions/lines
+  { "numToStr/Comment.nvim", opts = {} },
+
+  { -- Useful plugin to show you pending keybinds.
+    "folke/which-key.nvim",
+    event = "VimEnter", -- Sets the loading event to 'VimEnter'
+    config = function() -- This is the function that runs, AFTER loading
+      require("which-key").setup()
+
+      -- Document existing key chains
+      require("which-key").add({
+        { "<leader>s", group = "[S]earch" },
+        { "<leader>s_", hidden = true },
+      })
+    end,
   },
 
-	-- "gc" to comment visual regions/lines
-	{ "numToStr/Comment.nvim", opts = {} },
-
-	{ -- Useful plugin to show you pending keybinds.
-		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
-		config = function() -- This is the function that runs, AFTER loading
-			require("which-key").setup()
-
-			-- Document existing key chains
-			require("which-key").register({
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-			})
-		end,
-	},
-
-	-- imports all module in plugins directory
-	{ import = "plugins" },
+  -- imports all module in plugins directory
+  { import = "plugins" },
 })

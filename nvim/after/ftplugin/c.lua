@@ -11,32 +11,30 @@ vim.wo.colorcolumn = "80"
 
 -- Specifics key maps
 local wk = require("which-key")
-wk.register({
-  ["l"] = {
-    name = "[L]ang",
-    ["t"] = {
-      name = "[T]abs",
-
-      ["k"] = { function()
+wk.add({
+  { "<space>l", group = "[L]ang" },
+  { "<space>lt", group = "[T]abs" },
+  { "<space>ltk",
+    function()
         vim.bo.tabstop = 8
         vim.bo.softtabstop = 8
         vim.bo.shiftwidth = 8
         vim.bo.expandtab = false
-      end, "[K]ernel"},
+    end, desc = "[K]ernel" },
 
-      ["d" ]= { function()
+  { "<space>ltd",
+    function()
         vim.bo.tabstop = 4
         vim.bo.softtabstop = 4
         vim.bo.shiftwidth = 4
         vim.bo.expandtab = false
-      end, "[D]efault"},
+    end, desc = "[D]efault" },
 
-      ["n" ]= { function()
+  { "<space>ltn",
+    function()
         vim.bo.tabstop = 4
         vim.bo.softtabstop = 4
         vim.bo.shiftwidth = 4
         vim.bo.expandtab = true
-      end, "[N]x"}
-    },
-  },
+    end, desc = "[N]x" },
 }, { prefix = "<space>" })

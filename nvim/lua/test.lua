@@ -13,15 +13,23 @@ function AddTestKeymaps()
   -- Add test related keymaps
   local nt = require("neotest")
   local wk = require("which-key")
-  wk.register({
-    ["l"] = {
-      name = "[L]ang",
-        ["T"] = {
-          name = "[T]est",
-          ["r"] = {function() nt.run.run() end, "Run nea[r]est"},
-          ["f"] = {function() nt.run.run(vim.fn.expand("%")) end, "Run whole [f]ile"},
-          ["d"] = {function() nt.run.run({strategy = "dap"}) end, "Run nearest with [d]ap"},
-      },
-    },
+  wk.add({
+    { "<space>l", group = "[L]ang" },
+    { "<space>lT", group = "[T]est" },
+    { "<space>lTr",
+      function()
+        nt.run.run()
+      end,
+      desc = "Run nea[r]est" },
+    { "<space>lTf",
+      function()
+        nt.run.run(vim.fn.expand("%"))
+      end,
+      desc = "Run whole [f]ile"},
+    { "<space>lTd",
+      function()
+        nt.run.run({strategy = "dap"})
+      end,
+      desc = "Run nearest with [d]ap" },
   }, { prefix = "<space>" })
 end

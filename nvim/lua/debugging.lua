@@ -24,18 +24,14 @@ function AddDebugKeymaps()
   -- Add debug related keymaps
   -- Which key for breakpoints
   local wk = require("which-key")
-  wk.register({
-    ["l"] = {
-      name = "[L]ang",
-      ["d"] = {
-        name = "[D]ebugging",
-        ["b"] = { "<cmd>DapToggleBreakpoint<cr>", "Toggle [b]reakpoint"},
-        ["c"] = { "<cmd>DapContinue<cr>", "[C]ontinue"},
-        ["o"] = { "<cmd>DapStepOver<cr>", "Step[O]ver"},
-        ["i"] = { "<cmd>DapStepInto<cr>", "Step[I]nto"},
-        ["e"] = { "<cmd>DapStepOut<cr>", "St[e]pOut"},
-      },
-    },
+  wk.add({
+    { "<space>l", group = "[L]ang" },
+    { "<space>ld", group = "[D]ebugging" },
+    { "<space>ldb", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle [b]reakpoint" },
+    { "<space>lc", "<cmd>DapContinue<cr>", desc = "[C]ontinue"},
+    { "<space>lo", "<cmd>DapStepOver<cr>", desc = "Step[O]ver"},
+    { "<space>li", "<cmd>DapStepInto<cr>", desc = "Step[I]nto"},
+    { "<space>le", "<cmd>DapStepOut<cr>", desc = "St[e]pOut"},
   }, { prefix = "<space>" })
 
   -- Taken from Vscode

@@ -24,6 +24,7 @@
     bundles.games.enable = true;
     bundles.users.enable = true;
     bundles.power.enable = true;
+    bundles.hosts.enable = true;
   };
 
   networking = {

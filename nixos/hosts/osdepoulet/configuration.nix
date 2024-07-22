@@ -21,6 +21,7 @@
     bundles.games.enable = true;
     bundles.users.enable = true;
     bundles.bluetooth.enable = true;
+    bundles.hosts.enable = true;
   };
 
   networking = {

@@ -24,6 +24,7 @@ whichkey.add({
 	-- File menu
 	{ "<space>f", group = "[F]ile" },
 	{ "<space>ft", "<cmd>Neotree toggle<cr>", desc = "Toogle Neotree" },
+	{ "<space>fo", "<cmd>Oil<cr>", desc = "Open parent directory in oil"},
 
 	-- VCS/Git menu
 	{ "<space>g", group = "Vcs/[G]it" },

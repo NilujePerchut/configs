@@ -25,6 +25,7 @@
     bundles.users.enable = true;
     bundles.power.enable = true;
     bundles.hosts.enable = true;
+    bundles.vpn.enable = true;
   };
 
   networking = {

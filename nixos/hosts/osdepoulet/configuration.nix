@@ -22,6 +22,7 @@
     bundles.users.enable = true;
     bundles.bluetooth.enable = true;
     bundles.hosts.enable = true;
+    bundles.vpn.enable = true;
   };
 
   networking = {

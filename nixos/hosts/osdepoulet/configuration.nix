@@ -31,6 +31,10 @@
     firewall.enable = false;
   };
 
+  environment.sessionVariables = rec {
+    HYPRLAND_SCALE = "1.333333";
+  };
+
   # BIOS update
   services.fwupd.enable = true;
 

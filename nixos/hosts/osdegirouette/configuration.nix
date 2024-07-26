@@ -28,6 +28,10 @@
     bundles.vpn.enable = true;
   };
 
+  environment.sessionVariables = rec {
+    HYPRLAND_SCALE = "1";
+  };
+
   networking = {
     hostName = "osdegirouette";
     networkmanager.enable = true;

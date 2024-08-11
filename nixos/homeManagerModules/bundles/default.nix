@@ -7,7 +7,7 @@
 }: {
   home.packages = with pkgs; [
     brave
-    emacs
+    emacs-gtk
     gimp
   ];
 

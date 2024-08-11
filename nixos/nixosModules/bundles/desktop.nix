@@ -100,5 +100,7 @@
     jq
     waypaper
     swaybg
+
+    gparted
   ];
 }

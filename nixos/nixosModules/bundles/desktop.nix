@@ -5,6 +5,10 @@
   lib,
   ...
 }: {
+
+  # We are using the lxde polkit agent
+  security.polkit.enable = true;
+
   # Enable the GNOME Desktop Environment.
   services.xserver.desktopManager.gnome.enable = true;
 
@@ -102,5 +106,7 @@
     swaybg
 
     gparted
+
+    lxqt.lxqt-policykit
   ];
 }

@@ -12,8 +12,6 @@
       killall
       ripgrep
       dust
-      lxqt.qterminal
-      kitty
  ];
 
   # Starship

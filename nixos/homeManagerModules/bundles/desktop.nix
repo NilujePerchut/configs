@@ -6,11 +6,10 @@
   ...
 }: {
   home.packages = with pkgs; [
-    rustup
-    tig
-    python3Full
-    gcc
-    gnumake
-    cmake
+    lxqt.qterminal
+    kitty
+    brave
+    emacs-gtk
+    gimp
   ];
 }

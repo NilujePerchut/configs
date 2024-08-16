@@ -13,6 +13,7 @@
 
   myHomeManager = {
     bundles.default.enable = true;
+    bundles.desktop.enable = true;
     bundles.print3d.enable = true;
     bundles.nvim.enable = true;
     bundles.cli.enable = true;

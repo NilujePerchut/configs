@@ -108,5 +108,7 @@
     gparted
 
     lxqt.lxqt-policykit
+
+    firefox
   ];
 }

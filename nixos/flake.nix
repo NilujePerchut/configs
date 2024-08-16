@@ -16,12 +16,14 @@
         # ===================== NixOS Configurations ===================== #
         osdegirouette = mkSystem ./hosts/osdegirouette/configuration.nix;
         osdepoulet = mkSystem ./hosts/osdepoulet/configuration.nix;
+        osdeframboise = mkSystem ./hosts/osdeframboise/configuration.nix;
       };
 
       homeConfigurations = {
         # ================ Home configurations ================ #
         "niluje@osdegirouette" = mkHome "x86_64-linux" ./hosts/osdegirouette/home.nix;
         "niluje@osdepoulet" = mkHome "x86_64-linux" ./hosts/osdepoulet/home.nix;
+        "niluje@osdeframboise" = mkHome "aarch64-linux" ./hosts/osdeframboise/home.nix;
       };
 
       homeManagerModules.default = ./homeManagerModules;

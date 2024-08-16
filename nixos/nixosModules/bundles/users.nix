@@ -11,7 +11,6 @@
     description = "niluje";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
       zsh
     ];
   };

@@ -25,6 +25,9 @@
   myNixOS = {
     bundles.default.enable = true;
     bundles.users.enable = true;
+    services.cockpit.enable = true;
+    services.paperless.enable = true;
+    services.freshrss.enable = true;
   };
 
   networking = {
@@ -43,19 +46,37 @@
     ];
   };
 
+  # Disable firewall since we are behind a VPN
+  networking.firewall.enable = false;
+
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  services.cockpit = {
+    enable = true;
+    port = 9090;
+    settings = {
+      WebService = {
+        AllowUnencrypted = true;
+      };
+    };
+  };
 
-  # Copy the NixOS configuration file and link it from the resulting system
-  # (/run/current-system/configuration.nix). This is useful in case you
-  # accidentally delete configuration.nix.
-  # system.copySystemConfiguration = true;
+  environment.etc."paperless-admin-pass".text = "admin";
+  services.paperless = {
+    enable = true;
+    port = 9091;
+    address = "0.0.0.0";
+    passwordFile = "/etc/paperless-admin-pass";
+  };
 
-  system.stateVersion = "23.11"; # Did you read the comment?
+  environment.etc."freshrss-admin-pass".text = "admin";
+  services.freshrss = {
+    enable = true;
+    passwordFile = "/etc/freshrss-admin-pass";
+    baseUrl = "";
+    authType = "none";
+  };
 
+  system.stateVersion = "23.11";
 }

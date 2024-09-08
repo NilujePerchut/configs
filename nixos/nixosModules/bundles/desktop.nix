@@ -110,5 +110,7 @@
     lxqt.lxqt-policykit
 
     firefox
+    chromium
+    okular
   ];
 }

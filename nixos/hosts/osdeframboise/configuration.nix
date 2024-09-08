@@ -25,6 +25,7 @@
   myNixOS = {
     bundles.default.enable = true;
     bundles.users.enable = true;
+    bundles.hosts.enable = true;
     services.cockpit.enable = true;
     services.paperless.enable = true;
     services.freshrss.enable = true;

@@ -18,9 +18,29 @@
     port = 9091;
     address = "0.0.0.0";
     passwordFile = "/etc/paperless-admin-pass";
+    dataDir = "/mnt/paperless/data";
+    mediaDir = "/mnt/paperless/media";
+    consumptionDir = "/mnt/paperless/consumption";
+    consumptionDirIsPublic = true;
+  };
+
+  systemd.services.paperless = {
+      wants = [ "mnt-paperless.mount" ];
   };
 
   environment.systemPackages = with pkgs; [
     paperless-ngx
   ];
+
+  # Paperless-ngx data are mounted from an sshfs point on wmShare
+  fileSystems."/mnt/paperless" = {
+    device = "niluje@192.168.40.63:/server/paperless";
+    fsType = "sshfs";
+    options = [
+      "nodev"
+      "noatime"
+      "allow_other"
+      "IdentityFile=/home/niluje/.ssh/id_ed25519"
+    ];
+  };
 }

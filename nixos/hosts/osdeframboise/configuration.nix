@@ -29,6 +29,7 @@
     services.cockpit.enable = true;
     services.paperless.enable = true;
     services.freshrss.enable = true;
+    services.jellyfin.enable = true;
   };
 
   networking = {

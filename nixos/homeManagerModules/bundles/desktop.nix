@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     lxqt.qterminal
     kitty
+    wezterm
     brave
     emacs-gtk
     gimp

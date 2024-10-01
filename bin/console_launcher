@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Launch the first existing terminal from the list below
 
-TERMINALS="kitty qterminal gnome-terminal xfce4-terminal"
+TERMINALS="wezterm kitty qterminal gnome-terminal xfce4-terminal"
 
 for term in $TERMINALS; do
 	command -v $term > /dev/null 2>&1 && { exec $term $@; }

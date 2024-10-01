@@ -91,6 +91,7 @@ clean_zsh:
 	rm -rf $(BUILD_DIR)/zsh-autosuggestions
 	@# Remove Kitty stuff
 	rm -rf $(HOME)/.config/kitty
+	rm -rf $(HOME)/.wezterm.lua
 
 # Assumes, zsh is installed
 zsh: clean_zsh | $(BUILD_DIR)
@@ -105,6 +106,7 @@ zsh: clean_zsh | $(BUILD_DIR)
 	ln -s $(CONFIG_DIR)/zsh/starship.toml $(HOME)/.config/starship.toml
 	mkdir -p $(HOME)/.config/kitty
 	ln -s $(CONFIG_DIR)/kitty.conf $(HOME)/.config/kitty/kitty.conf
+	ln -s $(CONFIG_DIR)/wezterm.lua $(HOME)/.wezterm.lua
 	zsh -l
 
 ######################

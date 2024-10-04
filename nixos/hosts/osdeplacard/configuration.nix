@@ -24,6 +24,7 @@
     bundles.default.enable = true;
     bundles.users.enable = true;
     bundles.hosts.enable = true;
+    services.jellyfin.enable = true;
   };
 
   networking = {

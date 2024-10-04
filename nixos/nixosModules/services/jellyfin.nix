@@ -31,7 +31,9 @@
       "nodev"
       "noatime"
       "allow_other"
+      "user"
       "IdentityFile=/home/niluje/.ssh/id_ed25519"
+      "ConnectTimeout=20"
     ];
   };
 
@@ -43,7 +45,9 @@
       "nodev"
       "noatime"
       "allow_other"
+      "user"
       "IdentityFile=/home/niluje/.ssh/id_ed25519"
+      "ConnectTimeout=20"
     ];
   };
 }

@@ -28,6 +28,7 @@
 
   networking = {
     hostName = "osdeplacard";
+    networkmanager.enable = true;
     enableIPv6 = false;
   };
 

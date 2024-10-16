@@ -26,6 +26,7 @@
     bundles.hosts.enable = true;
     services.jellyfin.enable = true;
     services.paperless.enable = true;
+    services.dashboard.enable = true;
   };
 
   networking = {

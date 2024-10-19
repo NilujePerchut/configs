@@ -75,6 +75,13 @@
               href = "https://192.168.40.254";
             };
           }
+          {
+            "Home Assistant" = {
+              description = "Smart home control center";
+              icon = "home-assistant.png";
+              href = "http://192.168.40.43:8123";
+            };
+          }
         ];
       }
     ];

@@ -27,6 +27,7 @@
     services.jellyfin.enable = true;
     services.paperless.enable = true;
     services.dashboard.enable = true;
+    services.home_assistant.enable = true;
   };
 
   networking = {

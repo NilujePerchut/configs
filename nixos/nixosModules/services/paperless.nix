@@ -45,8 +45,11 @@
     ];
     script = ''
       set -eu
+      NUMBER_OF_KEPT_FILES=5
       TMP_DIR=/tmp/paperless
-      DIST_DIR=/volume1/server/paperless/
+      DIST_DIR=/volume1/server/paperless
+      SSH_COMMON=niluje@vmshare
+
       rm -rf "$TMP_DIR"
       mkdir "$TMP_DIR"
 
@@ -61,7 +64,22 @@
       export_name=$(ls $TMP_DIR)
 
       # Copy it to the backup
-      scp -i /home/niluje/.ssh/id_ed25519 -O "$TMP_DIR/$export_name" "niluje@vmshare:$DIST_DIR/"
+      scp -i /home/niluje/.ssh/id_ed25519 -O $TMP_DIR/$export_name "niluje@vmshare:$DIST_DIR/"
+
+      # Suppress old saves, only keep last $NUMBER_OF_KEPT_FILE
+      all_files=$(ssh -i /home/niluje/.ssh/id_ed25519 $SSH_COMMON ls $DIST_DIR)
+      all_files_len=$(ssh -i /home/niluje/.ssh/id_ed25519 $SSH_COMMON wc -w <<< $all_files)
+      let "nb_files_to_suppress=$all_files_len - $NUMBER_OF_KEPT_FILES"
+      if [ "$nb_files_to_suppress" -gt 0 ]; then
+        files_to_suppress=$(ssh -i /home/niluje/.ssh/id_ed25519 "$SSH_COMMON" ls -t $DIST_DIR | tail -n"$nb_files_to_suppress")
+        for file in $files_to_suppress; do
+          ssh -i /home/niluje/.ssh/id_ed25519 "$SSH_COMMON" rm $DIST_DIR/$file
+        done
+      fi
+
+      # For a reason, the data dir changes its rights after some times.
+      # Make it accessible for anybody
+      chmod -R ugo+rwx /mnt/data/paperless
     '';
     enable = true;
     serviceConfig = {

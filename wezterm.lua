@@ -13,5 +13,6 @@ config.color_scheme = "Darktooth (base16)"
 -- UI
 config.enable_tab_bar= false
 config.enable_scroll_bar = true
+config.audible_bell = "Disabled"
 
 return config

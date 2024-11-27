@@ -76,6 +76,13 @@
             };
           }
           {
+            "Printer Server" = {
+              description = "Raspberry pi printer server admin page";
+              icon = "printer.png";
+              href = "https://192.168.40.64:631";
+            };
+          }
+          {
             "Home Assistant" = {
               description = "Smart home control center";
               icon = "home-assistant.png";

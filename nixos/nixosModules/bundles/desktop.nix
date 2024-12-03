@@ -25,8 +25,6 @@
   # Enable opengl
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   # Configure keymap in X11
@@ -43,7 +41,6 @@
   security.pam.services.swaylock = {};
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

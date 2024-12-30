@@ -15,7 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 -- These are only the core plugins
 -- non core plugins will be loaded afterward
 require("lazy").setup({
-  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
   { "ibhagwan/smartyank.nvim", opts = {} },
 
   -- "gc" to comment visual regions/lines

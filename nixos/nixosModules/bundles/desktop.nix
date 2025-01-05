@@ -32,10 +32,14 @@
     enable = true;
     xkb.layout = "fr";
     xkb.variant = "";
+    videoDrivers = [ "displaylink" "modesettings" ];
     displayManager.gdm = {
       enable = true;
       wayland = true;
     };
+    displayManager.sessionCommands = ''
+      ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
+    '';
   };
 
   security.pam.services.swaylock = {};

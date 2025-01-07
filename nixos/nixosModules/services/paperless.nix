@@ -47,8 +47,8 @@
       set -eu
       NUMBER_OF_KEPT_FILES=5
       TMP_DIR=/tmp/paperless
-      DIST_DIR=/volume1/server/paperless
-      SSH_COMMON=niluje@vmshare
+      DIST_DIR=/sftp/niluje/vmshare2/files/server/paperless
+      SSH_COMMON=niluje@vmshare2
 
       rm -rf "$TMP_DIR"
       mkdir "$TMP_DIR"
@@ -64,7 +64,7 @@
       export_name=$(ls $TMP_DIR)
 
       # Copy it to the backup
-      scp -i /home/niluje/.ssh/id_ed25519 -O $TMP_DIR/$export_name "niluje@vmshare:$DIST_DIR/"
+      scp -i /home/niluje/.ssh/id_ed25519 -O $TMP_DIR/$export_name "niluje@vmshare2:$DIST_DIR/"
 
       # Suppress old saves, only keep last $NUMBER_OF_KEPT_FILE
       all_files=$(ssh -i /home/niluje/.ssh/id_ed25519 $SSH_COMMON ls $DIST_DIR)

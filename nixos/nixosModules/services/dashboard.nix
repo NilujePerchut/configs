@@ -64,8 +64,8 @@
           {
             "NAS" = {
               description = "Saves";
-              icon = "synology.png";
-              href = "https://192.168.40.63:5001";
+              icon = "openmediavault.png";
+              href = "https://192.168.40.65";
             };
           }
           {

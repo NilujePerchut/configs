@@ -25,7 +25,7 @@
 
   # Mount Music folder
   fileSystems."/mnt/music" = {
-    device = "niluje@vmshare:/music";
+    device = "niluje@vmshare2:/sftp/niluje/vmshare2/music";
     fsType = "sshfs";
     options = [
       "nodev"
@@ -39,7 +39,7 @@
 
   # Mount Video folder
   fileSystems."/mnt/video" = {
-    device = "niluje@vmshare:/video";
+    device = "niluje@vmshare2:/sftp/niluje/vmshare2/video";
     fsType = "sshfs";
     options = [
       "nodev"

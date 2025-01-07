@@ -27,6 +27,9 @@ sudo nixos-rebuild switch --flake ~/configs/nixos#${hostname};
 echo About to install home-manager and stuff
 nix-shell -p home-manager --command "home-manager switch --flake ~/configs/nixos#niluje";
 
+# Install the displaylink driver
+nix-prefetch-url --name displaylink-600.zip https://www.synaptics.com/sites/default/files/exe_files/2024-05/DisplayLink%20USB%20Graphics%20Software%20for%20Ubuntu6.0-EXE.zip
+
 # Install hyprland config
 cd ~/configs && make hyprland
 

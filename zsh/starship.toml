@@ -4,6 +4,7 @@ $time\
 $username\
 $hostname\
 $directory\
+$nix_shell\
 $c\
 $python\
 $docker_context\
@@ -41,6 +42,10 @@ format = "[$path](blue) "
 symbol = ""
 format = '[ $symbol ($version) ](yellow)'
 
+[nix_shell]
+symbol = "❄️ "
+format = 'via [☃️ $state( \($name\))](bold blue) '
+
 [docker_context]
 symbol = ""
 format = '[ $symbol $context ](yellow) $path'
@@ -63,4 +68,3 @@ format = '[$symbol $branch(:$remote_branch)]($dimmed yellow) '
 
 [git_status]
 format = '[$all_status$ahead_behind ](dimmed yellow)'
-

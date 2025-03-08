@@ -9,6 +9,7 @@
       starship
       silver-searcher
       zellij
+      tmux
       killall
       ripgrep
       dust

@@ -23,7 +23,7 @@
   };
 
   # Enable opengl
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   };
 
@@ -90,7 +90,7 @@
     kitty
     rofi-wayland
     wev
-    cinnamon.nemo-with-extensions
+    nemo-with-extensions
     pavucontrol
     bluez
     swaylock-effects
@@ -105,6 +105,7 @@
     jq
     waypaper
     swaybg
+    wl-clipboard
 
     gparted
 

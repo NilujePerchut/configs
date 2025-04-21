@@ -12,5 +12,6 @@
     brave
     emacs-gtk
     gimp
+    onlyoffice-bin
   ];
 }

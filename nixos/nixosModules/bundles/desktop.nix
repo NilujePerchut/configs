@@ -45,7 +45,7 @@
   security.pam.services.swaylock = {};
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -73,7 +73,9 @@
 
   fonts.packages = with pkgs; [
     #noto-fonts
-    (nerdfonts.override { fonts = [ "Noto" "Iosevka"]; })
+    #(nerdfonts.override { fonts = [ "Noto" "Iosevka"]; })
+    pkgs.nerd-fonts.noto
+    pkgs.nerd-fonts.iosevka
   ];
 
   environment.systemPackages = with pkgs; [
@@ -113,6 +115,6 @@
 
     firefox
     chromium
-    okular
+    kdePackages.okular
   ];
 }

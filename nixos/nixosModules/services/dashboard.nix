@@ -7,6 +7,7 @@
 }: {
   services.homepage-dashboard = {
     enable = true;
+    allowedHosts = "*";
 
     bookmarks = [
       {

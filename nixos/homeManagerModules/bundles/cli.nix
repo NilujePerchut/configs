@@ -23,7 +23,7 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-    initExtra = "source /home/niluje/configs/zsh/.zshrc\n";
+    initContent = "source /home/niluje/configs/zsh/.zshrc\n";
   };
 
   home.sessionVariables = {

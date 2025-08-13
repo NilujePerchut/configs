@@ -72,8 +72,6 @@
   };
 
   fonts.packages = with pkgs; [
-    #noto-fonts
-    #(nerdfonts.override { fonts = [ "Noto" "Iosevka"]; })
     pkgs.nerd-fonts.noto
     pkgs.nerd-fonts.iosevka
   ];

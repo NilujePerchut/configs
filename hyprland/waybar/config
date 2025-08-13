@@ -11,7 +11,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right": ["cpu", "temperature", "memory", "backlight", "battery", "power-profiles-daemon", "pulseaudio", "tray"],
+    "modules-right": ["cpu", "temperature", "memory", "hyprland/language", "backlight", "battery", "power-profiles-daemon", "pulseaudio", "tray"],
 
     // Modules configuration
     "hyprland/workspaces": {
@@ -91,7 +91,13 @@
         "interval": 2,
         "format": "{}% "
     },
-   "disk": {
+    "hyprland/language": {
+        "format": "{} ⌨",
+	"on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
+        "format-fr": "FR",
+        "format-en": "US",
+    },
+    "disk": {
         "interval": 15,
         "format": "{percentage_used}% 󰋊",
     },

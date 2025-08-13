@@ -201,8 +201,8 @@ label:focus {
 }
 
 #language {
-  background: @fg;
-  color: @bg-alt;
+  background: @bg;
+  color: #679c68;
   padding: 0 5px;
   margin: 0 5px;
   min-width: 16px;

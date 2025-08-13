@@ -13,5 +13,6 @@
     gnumake
     cmake
     devenv
+    qmk
   ];
 }

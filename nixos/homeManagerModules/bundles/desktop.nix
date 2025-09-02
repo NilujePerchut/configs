@@ -13,5 +13,6 @@
     emacs-gtk
     gimp
     onlyoffice-bin
+    vlc
   ];
 }

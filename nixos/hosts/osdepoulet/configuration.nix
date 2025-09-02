@@ -23,6 +23,7 @@
     bundles.bluetooth.enable = true;
     bundles.hosts.enable = true;
     bundles.vpn.enable = true;
+    bundles.qmk_dev.enable = true;
   };
 
   networking = {

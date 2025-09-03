@@ -10,8 +10,6 @@
 
 (setq doom-theme 'doom-one)
 
-(menu-bar-mode 1)
-
 (setq display-line-numbers-type 'relative)
 
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
@@ -31,6 +29,8 @@ lines-tail newline newline-mark)
   "Unconditionally turn off Whitespace mode."
   (interactive)
   (setq-local whitespace-style nil))
+
+(menu-bar-mode 1)
 
 (add-hook 'prog-mode-hook (global-whitespace-mode +1))
 

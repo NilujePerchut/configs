@@ -106,6 +106,8 @@
     waypaper
     swaybg
     wl-clipboard
+    capitaine-cursors-themed
+    nwg-look
 
     gparted
 

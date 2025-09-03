@@ -65,7 +65,6 @@ return {
 					"make",
 					"markdown",
 					"verilog",
-					"org",
 				},
 				auto_install = true,
 				highlight = { enable = true },

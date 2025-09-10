@@ -14,5 +14,7 @@
     gimp
     onlyoffice-bin
     vlc
+    putty
+    meld
   ];
 }

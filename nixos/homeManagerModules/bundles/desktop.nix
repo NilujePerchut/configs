@@ -5,6 +5,9 @@
   lib,
   ...
 }: {
+
+  myHomeManager.firefox.enable = true;
+
   home.packages = with pkgs; [
     lxqt.qterminal
     kitty

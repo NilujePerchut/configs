@@ -113,7 +113,6 @@
 
     lxqt.lxqt-policykit
 
-    firefox
     chromium
     kdePackages.okular
   ];

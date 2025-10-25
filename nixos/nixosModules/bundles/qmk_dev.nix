@@ -15,11 +15,13 @@
 
     packages = with pkgs; [
       via
+      picoprobe-udev-rules
     ];
   };
 
   environment.systemPackages = with pkgs; [
     qmk
     gcc-arm-embedded
+    usbutils
   ];
 }

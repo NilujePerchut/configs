@@ -9,7 +9,7 @@
   users.users.niluje = {
     isNormalUser = true;
     description = "niluje";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "plugdev" ];
     packages = with pkgs; [
       zsh
     ];

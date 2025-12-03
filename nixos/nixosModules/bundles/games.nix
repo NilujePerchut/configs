@@ -7,7 +7,7 @@
 }: {
   environment.systemPackages = with pkgs; [
     steam
-    protonup
+    protonup-ng
     heroic
     bottles
   ];

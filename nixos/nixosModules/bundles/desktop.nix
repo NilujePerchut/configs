@@ -10,7 +10,7 @@
   security.polkit.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   programs = {
     hyprland = {
@@ -28,15 +28,16 @@
   };
 
   # Configure keymap in X11
+
+  services.displayManager.gdm = {
+      enable = true;
+      wayland = true;
+  };
   services.xserver = {
     enable = true;
     xkb.layout = "fr";
     xkb.variant = "";
     videoDrivers = [ "displaylink" "modesettings" ];
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
     displayManager.sessionCommands = ''
       ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
     '';
@@ -88,7 +89,7 @@
     dunst
     libnotify
     kitty
-    rofi-wayland
+    rofi
     wev
     nemo-with-extensions
     pavucontrol

@@ -9,7 +9,7 @@
   programs.home-manager.enable = true;
 
   # Git settings must always be installed
-  programs.git.userName = "niluje";
-  programs.git.userEmail = "debarge.cedric@gmail.com";
+  programs.git.settings.user.name = "niluje";
+  programs.git.settings.user.email = "debarge.cedric@gmail.com";
 
 }

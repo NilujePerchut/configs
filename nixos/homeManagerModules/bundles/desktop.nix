@@ -15,7 +15,7 @@
     brave
     emacs-gtk
     gimp
-    onlyoffice-bin
+    onlyoffice-desktopeditors
     vlc
     putty
     meld

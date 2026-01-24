@@ -23,7 +23,6 @@
     bundles.default.enable = true;
     bundles.games.enable = true;
     bundles.users.enable = true;
-    bundles.power.enable = true;
     bundles.hosts.enable = true;
     bundles.vpn.enable = true;
   };

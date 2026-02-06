@@ -12,4 +12,8 @@
   programs.git.settings.user.name = "niluje";
   programs.git.settings.user.email = "debarge.cedric@gmail.com";
 
+  programs.git = {
+    enable = true;
+    settings.init.defaultBranch = "main";
+  };
 }

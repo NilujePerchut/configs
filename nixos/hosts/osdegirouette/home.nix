@@ -16,6 +16,7 @@
     bundles.desktop.enable = true;
     bundles.print3d.enable = true;
     bundles.nvim.enable = true;
+    bundles.tmux.enable = true;
     bundles.cli.enable = true;
     bundles.prog.enable = true;
     bundles.elec.enable = true;

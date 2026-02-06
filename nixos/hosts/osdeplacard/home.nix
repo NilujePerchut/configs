@@ -14,6 +14,7 @@
   myHomeManager = {
     bundles.default.enable = true;
     bundles.nvim.enable = true;
+    bundles.tmux.enable = true;
     bundles.cli.enable = true;
   };
 }

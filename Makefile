@@ -7,8 +7,8 @@ BIN_DIR := $(CONFIG_DIR)/bin
 ######################
 
 PHONY: all clean
-all: nvim zsh i3 doom_emacs vscode
-clean: clean_nvim clean_zsh i3_clean clean_doom_emacs clean_vscode
+all: nvim zsh i3 doom_emacs vscode tmux
+clean: clean_nvim clean_zsh i3_clean clean_doom_emacs clean_vscode clean_tmux
 
 ######################
 # MISC
@@ -47,6 +47,21 @@ i3: i3_clean register_bins
 	mkdir $(HOME)/.config/gsimplecal
 	ln -s $(HOME)/configs/i3/gsimplecal_config $(HOME)/.config/gsimplecal/config
 
+######################
+# Tmux
+######################
+
+PHONY += clean_tmux tmux
+
+# tmux
+clean_nvim:
+	@# remove any existing configuration
+	mkdir -p $(HOME)/.config
+	rm -rf $(HOME)/.config/tmux
+
+nvim: clean_tmux
+	@# create the new link
+	ln -s $(CONFIG_DIR)/tmux $(HOME)/.config/tmux
 
 ######################
 # neovim
@@ -65,7 +80,6 @@ clean_nvim:
 nvim: clean_nvim
 	@# create the new link
 	ln -s $(CONFIG_DIR)/nvim $(HOME)/.config/nvim
-
 
 ######################
 # Zsh

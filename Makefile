@@ -54,12 +54,12 @@ i3: i3_clean register_bins
 PHONY += clean_tmux tmux
 
 # tmux
-clean_nvim:
+clean_tmux:
 	@# remove any existing configuration
 	mkdir -p $(HOME)/.config
 	rm -rf $(HOME)/.config/tmux
 
-nvim: clean_tmux
+tmux: clean_tmux
 	@# create the new link
 	ln -s $(CONFIG_DIR)/tmux $(HOME)/.config/tmux
 

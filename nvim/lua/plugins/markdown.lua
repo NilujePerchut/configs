@@ -1,10 +1,10 @@
 -- Markdown related stuff
 return {
-	{
-		"iamcco/markdown-preview.nvim",
+  {
+    "iamcco/markdown-preview.nvim",
     ft = { "markdown" },
-		config = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
+    config = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
 }

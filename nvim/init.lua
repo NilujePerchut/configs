@@ -13,7 +13,11 @@ vim.g.maplocalleader = " "
 -- Core stuff
 require("options")
 require("plugins_base")
+require("eye_candy")
+require("files")
+require("git")
+require("lsp")
+require("autocomplete")
+
+-- Must be the last one
 require("keys")
-require("eye-candy")
-require("debugging")
-require("test")

@@ -1,21 +1,23 @@
 --
--- Keymapping (excluding treesitter ones)
+-- Keymapping
 -- ----------------
 
--- Uses which key to handle key
-local status_ok, whichkey = pcall(require, "which-key")
-if not status_ok then
-  return
-end
+vim.pack.add({
+	"https://github.com/folke/which-key.nvim",
+})
 
-whichkey.setup()
-whichkey.add({
-  { "<space><space>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+require("snacks").setup()
+
+-- Uses which key to handle key
+local wk = require("which-key")
+wk.setup()
+wk.add({
+  { "<space><space>", function() Snacks.picker.files() end, desc = "[S]earch Files" },
   { "<space>!",  "<cmd>:rightbelow split | terminal<cr>", desc = "Spawn terminal" },
 
   -- Buffer menu
   { "<space>b", group = "[B]uffer" },
-  { "<space>bb", "<cmd>Telescope buffers<cr>", desc = "Buffer list" },
+  { "<space>bb", function() Snacks.picker.buffers() end, desc = "Buffer list" },
   { "<space>bc", "<cmd>%y *<cr>", desc = "Copy whole buffer" },
   { "<space>bd", "<cmd>bd<cr>", desc = "Destroy buffer" },
   { "<space>bN", "<cmd>new<cr>", desc = "New empty buffer" },
@@ -47,6 +49,15 @@ whichkey.add({
 
   -- Search menu
   { "<space>s", group = "[S]earch" },
+  { "<space>sh", function() Snacks.picker.help() end, desc = "[S]earch [H]elp" },
+  { "<space>sk", function() Snacks.picker.keymaps() end, desc = "[S]earch [K]eys" },
+  { "<space>sw", function() Snacks.picker.grep_word() end, desc = "[S]earch Current [W]ord" },
+  { "<space>sg", function() Snacks.picker.grep() end, desc = "[S]earch [G]rep" },
+  { "<space>sd", function() Snacks.picker.diagnostics() end, desc = "[S]earch [D]iagnostics" },
+  { "<space>sr", function() Snacks.picker.resume() end, desc = "[S]earch [R]esume" },
+  { "<space>n", function()
+      Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+    end, desc = "[S]earch Files" },
 
   -- Toggle menu
   { "<space>T", group = "[T]oggle" },

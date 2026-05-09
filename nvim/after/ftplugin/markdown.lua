@@ -2,6 +2,10 @@
 -- Markdown stuff
 -- ----------------
 
+vim.pack.add({
+  "http://github.com/iamcco/markdown-preview.nvim",
+})
+
 -- Specifics key maps
 local wk = require("which-key")
 wk.add({

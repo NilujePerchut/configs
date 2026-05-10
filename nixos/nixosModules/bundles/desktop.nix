@@ -22,6 +22,8 @@
     };
   };
 
+  programs.niri.enable = true;
+
   # Enable opengl
   hardware.graphics = {
     enable = true;
@@ -37,9 +39,9 @@
     enable = true;
     xkb.layout = "fr";
     xkb.variant = "";
-    videoDrivers = [ "displaylink" "modesettings" ];
+    #videoDrivers = [ "displaylink" "modesettings" ];
     displayManager.sessionCommands = ''
-      ${lib.getBin pkgs.xorg.xrandr}/bin/xrandr --setprovideroutputsource 2 0
+      ${lib.getBin pkgs.xrandr}/bin/xrandr --setprovideroutputsource 2 0
     '';
   };
 
@@ -109,6 +111,11 @@
     wl-clipboard
     capitaine-cursors-themed
     nwg-look
+
+    # Niri
+    niri
+    xwayland-satellite
+    noctalia-shell
 
     gparted
 

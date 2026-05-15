@@ -9,7 +9,6 @@
     steam
     protonup-ng
     heroic
-    bottles
   ];
 
   programs.steam.enable = true;

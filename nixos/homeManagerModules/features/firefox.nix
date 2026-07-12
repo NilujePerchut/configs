@@ -5,7 +5,9 @@
   lib,
   ...
 }: {
+
   programs.firefox = {
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
     enable = true;
     profiles.niluje = {
       extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [

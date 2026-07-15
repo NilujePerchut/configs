@@ -1,0 +1,13 @@
+net_enabled = 1
+
+# Listen on localhost and the host's LAN IP
+net_port = 127.0.0.1:7627,192.168.40.66:7627
+net_acl = +192.168.40.0/24
+
+# Enable full config access from the web interface
+net_config_full_access = 1
+
+sys_engine = /run/current-system/sw/bin/snapraid
+sys_log_directory = /home/niluje/configs/nixos/hosts/osdetv/logs
+
+net_web_root = /home/niluje/work/snapraid-daemon/commander.zip

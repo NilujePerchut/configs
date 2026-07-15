@@ -23,6 +23,7 @@
         osdepoulet = mkSystem ./hosts/osdepoulet/configuration.nix;
         osdeframboise = mkSystem ./hosts/osdeframboise/configuration.nix;
         osdeplacard = mkSystem ./hosts/osdeplacard/configuration.nix;
+        osdetv = mkSystem ./hosts/osdetv/configuration.nix;
       };
 
       homeConfigurations = {
@@ -31,6 +32,7 @@
         "niluje@osdepoulet" = mkHome "x86_64-linux" ./hosts/osdepoulet/home.nix;
         "niluje@osdeframboise" = mkHome "aarch64-linux" ./hosts/osdeframboise/home.nix;
         "niluje@osdeplacard" = mkHome "x86_64-linux" ./hosts/osdeplacard/home.nix;
+        "niluje@osdetv" = mkHome "x86_64-linux" ./hosts/osdetv/home.nix;
       };
 
       homeManagerModules.default = ./homeManagerModules;

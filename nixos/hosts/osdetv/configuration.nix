@@ -32,6 +32,12 @@
     hostName = "osdetv";
     networkmanager.enable = true;
     enableIPv6 = false;
+
+    interfaces = {
+      eno1 = {
+        wakeOnLan.enable = true;
+      };
+    };
   };
 
   # Disable firewall since we are behind a VPN

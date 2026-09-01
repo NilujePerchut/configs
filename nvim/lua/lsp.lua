@@ -18,6 +18,7 @@ require("mason-tool-installer").setup({
 		"rust_analyzer",
 		"bashls",
 		"marksman",
+    "tinymist",
 	}
 })
 
@@ -45,4 +46,14 @@ vim.lsp.config("clangd", {
 		"clangd",
 		"--query-driver=/usr/bin/arm-none-eabi-gcc,/usr/bin/gcc,/usr/bin/g++,usr/bin/clang,/usr/bin/clang++",
 	},
+})
+
+vim.lsp.config("tinymist", {
+  cmd = { "tinymist" },
+  filetypes = { "typst" },
+  settings = {
+    formatterMode = "typstyle",
+    exportPdf = "onType",
+    semanticsTockens = "disable",
+  },
 })

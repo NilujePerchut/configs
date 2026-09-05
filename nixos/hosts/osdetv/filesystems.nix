@@ -153,7 +153,7 @@ in {
     net_config_full_access = 1
 
     sys_engine = /run/current-system/sw/bin/snapraid
-    sys_log_directory = /home/niluje/configs/nixos/hosts/osdetv/logs
+    sys_log_retention_days = 120
 
     net_web_root = ${snapraidd}/share/snapraidd/commander.zip
     EOF
@@ -166,12 +166,22 @@ in {
   systemd.services."snapraidd" = {
     description = "Snapraidd ui deamon";
     wantedBy = ["multi-user.target"];
-    after = ["network.target"];
+    after = ["network-online.target"
+             "local-fs.target"];
+    wants = ["network-online.target"
+             "local-fs.target"];
     enable = true;
     serviceConfig = {
       User = "root";
-      Restart = "always";
+      Group = "root";
+      Type = "forking";
+      Restart = "on-failure";
+      Restart-sec = "5";
+      PIDFile = "/run/snapraidd.pid";
       ExecStart = "${snapraidd}/bin/snapraidd -c /etc/snapraidd.conf";
+      ExecReload = "${pkgs.util-linux}/bin/kill -HUP $MAINPID";
+      Nice = "19";
+      IOSchedulingClass = "idle";
     };
   };
 }

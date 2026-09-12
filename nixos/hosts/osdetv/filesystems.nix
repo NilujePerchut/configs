@@ -184,4 +184,27 @@ in {
       IOSchedulingClass = "idle";
     };
   };
+
+  services.samba = {
+    enable = true;
+    securityType = "user";
+    openFirewall = true;
+    settings = {
+      global = {
+        "workgroup" = "WORKGROUP";
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+        "map to guest" = "bad user";
+        "invalid users" = [ "root" ];
+      };
+      public = {
+        "path" = "/mnt/mergerfs";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "no";
+        "comment" = "Samba test";
+      };
+    };
+  };
 }

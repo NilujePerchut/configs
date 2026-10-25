@@ -38,7 +38,11 @@ eval "$(starship init zsh)"
 [ ! -e /etc/nixos ] && source ${HOME}/configs/build/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
-source ${0:a:h}/aliases.zsh
+if [ -e /etc/nixos ]; then
+  source ${0:A:h}/aliases.zsh
+else
+  source ${HOME}/configs/zsh/aliases.zsh
+fi
 
 # Set the default editor to vim/neovim
 export EDITOR=vim

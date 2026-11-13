@@ -13,6 +13,10 @@ fi
 setopt autocd
 setopt multios
 
+# Disable graphical login/mdp for ssh/git
+unset GIT_ASKPASS
+unset SSH_ASKPASS
+
 # Setup completions
 autoload -Uz compinit
 compinit

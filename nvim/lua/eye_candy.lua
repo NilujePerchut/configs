@@ -29,6 +29,9 @@ require("lualine").setup {
 -- Whitespace Highlight
 require("mini.trailspace").setup()
 
+-- Smooth scrolling
+require("mini.animate").setup()
+
 -- Add indentation guides even on blank lines
 require("ibl").setup()
 

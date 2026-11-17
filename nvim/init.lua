@@ -18,6 +18,7 @@ require("files")
 require("git")
 require("lsp")
 require("autocomplete")
+require("orgmode")
 
 -- Must be the last one
 require("keys")
